@@ -1,0 +1,2655 @@
+<html lang="id"><head>
+  <meta charset="UTF-8">
+  <title>Carcass Duck Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font agar tampilan lebih modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-soft: #ecfdf3;
+      --accent: #fb923c;
+      --danger: #dc2626;
+      --border-soft: #e5e7eb;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --bg-body: #f3f4f6;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e0f2fe 0, #f3f4f6 40%, #f9fafb 100%);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-main);
+    }
+
+    .page-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+	
+	.customer-select {
+	  padding: 7px 12px;
+	  border-radius: 999px;
+	  border: 1px solid #d1d5db;
+	  font-size: 12px;
+	  font-family: inherit;
+	  background: #fff;
+	  width: 368px;
+	}
+
+    .container {
+      background: #ffffff;
+      padding: 22px 24px 24px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative corner */
+    .container::before {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(16,185,129,0.12) 0, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h1 span.badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 8px 0 16px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: #f9fafb;
+      border: 1px dashed #e5e7eb;
+    }
+
+    .note b {
+      color: var(--primary-dark);
+    }
+
+    .note code {
+      background: #f3f4f6;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    /* Top action area */
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-moq {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.16s ease;
+      color: #374151;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-moq::before {
+      content: "●";
+      font-size: 9px;
+      color: #9ca3af;
+    }
+
+    .btn-moq.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary-dark);
+      box-shadow: 0 8px 20px rgba(15, 118, 110, 0.25);
+    }
+
+    .btn-moq.active::before {
+      color: #bbf7d0;
+    }
+
+    .btn-moq:hover:not(.active) {
+      background: #f3f4f6;
+      border-color: #cbd5e1;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-print,
+    .btn-reset {
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid transparent;
+      transition: all 0.16s ease;
+      white-space: nowrap;
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, #0f766e, #0ea5e9);
+      border-color: #0f766e;
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(15, 118, 110, 0.3);
+    }
+
+    .btn-print:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 118, 110, 0.35);
+      filter: brightness(1.02);
+    }
+
+    .btn-reset {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #b91c1c;
+    }
+
+    .btn-reset:hover {
+      background: #fee2e2;
+      border-color: #fca5a5;
+    }
+
+    /* Table */
+    .table-wrapper {
+      width: 100%;
+      margin-top: 8px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      background: #ffffff;
+      position: relative;
+	  overflow-x: auto;  /* PENTING: supaya tabel bisa geser kanan-kiri di HP */
+    }
+
+    .table-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(249,250,251,0.4), transparent 18%);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    thead {
+      background: #f3f4f6;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th, td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 7px 8px;
+      text-align: right;
+    }
+
+    th {
+      font-weight: 600;
+      color: #4b5563;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: #f9fafb;
+    }
+
+    th:first-child,
+    td:first-child,
+    th:nth-child(2),
+    td:nth-child(2) {
+      text-align: left;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    tbody tr:hover {
+      background: #ecfdf3;
+    }
+	
+	/* Highlight baris yang sudah diisi */
+	tbody tr.row-filled {
+	  background: linear-gradient(90deg, #d1fae5 0%, #ecfdf5 100%) !important;
+	  border-left: 3px solid #10b981;
+	}
+
+	tbody tr.row-filled td:first-child {
+	  font-weight: 700;
+	  color: var(--primary-dark);
+	}
+
+	tbody tr.row-filled td[data-role="total"] {
+	  font-weight: 700;
+	  color: var(--primary-dark);
+	}
+
+	tbody tr.row-filled input.box-input {
+	  background: #ffffff;
+	  border-color: #10b981;
+	  font-weight: 600;
+	  color: var(--primary-dark);
+	  box-shadow: 0 0 0 1px rgba(16,185,129,0.35);
+	}
+
+	tbody tr.row-filled:hover {
+	  background: linear-gradient(90deg, #bbf7d0 0%, #d1fae5 100%) !important;
+	}
+
+    tfoot td {
+      font-weight: 600;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      font-size: 12px;
+    }
+
+    tfoot td:first-child,
+    tfoot td:nth-child(2) {
+      color: var(--primary-dark);
+    }
+	
+	.table-wrapper tfoot {
+	  display: none;
+	}
+
+
+    input.box-input {
+      width: 72px;
+      padding: 4px 6px;
+      text-align: right;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      font-size: 12px;
+      font-family: inherit;
+      background: #f9fafb;
+      transition: all 0.16s ease;
+    }
+
+    input.box-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(16,185,129,0.45);
+    }
+
+    /* Summary cards */
+    .summary {
+      margin-top: 18px;
+      font-size: 13px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .summary-item {
+      background: #f9fafb;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      min-width: 140px;
+      flex: 1 1 140px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-item::before {
+      content: "";
+      position: absolute;
+      right: -12px;
+      bottom: -12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(16,185,129,0.12) 0, transparent 60%);
+    }
+
+    .summary-label {
+      font-size: 11px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+
+    .summary-value {
+      font-weight: 600;
+      margin-top: 2px;
+      font-size: 15px;
+      color: #111827;
+    }
+
+    .summary-item:last-child .summary-value {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .small-text {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .small-text b {
+      color: #4b5563;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        padding: 16px 14px 18px;
+        border-radius: 12px;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .top-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .table-wrapper {
+        overflow-x: auto;
+      }
+      table {
+        min-width: 700px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 19px;
+      }
+      .subtitle {
+        font-size: 12px;
+      }
+      .btn-moq,
+      .btn-print,
+      .btn-reset {
+        font-size: 11px;
+        padding: 6px 11px;
+      }
+      .summary-value {
+        font-size: 14px;
+      }
+      .summary-item:last-child .summary-value {
+        font-size: 15px;
+      }
+    }
+	/* Tablet & HP lebar sedang */
+@media (max-width: 900px) {
+  body {
+    padding: 12px;
+  }
+  .page-wrapper {
+    max-width: 100%;
+  }
+  .container {
+    padding: 16px 14px 18px;
+    border-radius: 12px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .top-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  table {
+    min-width: 700px; /* tabel tetap lebar, tapi bisa di-swipe horizontal */
+  }
+}
+
+/* HP (kecil–sedang) */
+@media (max-width: 640px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 14px 12px 16px;
+  }
+
+  .header {
+    gap: 8px;
+  }
+
+  h1 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .note {
+    font-size: 11px;
+    padding: 8px 9px;
+  }
+
+  /* Tombol minimal order dibikin 2 kolom */
+  .btn-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-group .btn-moq {
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  /* Tombol print & reset full width */
+  .action-buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-print,
+  .btn-reset {
+    flex: 1 1 100%;
+    justify-content: center;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  /* Kartu ringkasan ditumpuk ke bawah */
+  .summary {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .summary-item {
+    flex: 1 1 100%;
+  }
+}
+
+/* HP sangat kecil */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 17px;
+  }
+
+  .btn-moq,
+  .btn-print,
+  .btn-reset {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .summary-value {
+    font-size: 14px;
+  }
+
+  .summary-item:last-child .summary-value {
+    font-size: 15px;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="header">
+        <div class="title-wrap">
+          <h1>
+            Carcass Duck Calculator
+            <span class="badge">PT Malindo Feedmill Tbk</span>
+          </h1>
+          <div class="subtitle">
+            Simulasikan kebutuhan pesanan berdasarkan size, jumlah karung, dan minimal order.
+          </div>
+        </div>
+      </div>
+
+      <p class="note">
+        Input hanya pada kolom <b>Karung</b>, kolom lain akan terhitung otomatis.<br>
+        Pilih Tab <b>Harga</b> untuk menampilkan harga yang sesuai minimal order.<br><br>
+		<b style="color: red;">LAST PRICE UPDATE : 03 Agustus 2026</b>
+      </p>
+
+      <div class="top-actions">
+        <div class="btn-group">
+          <button class="btn-moq active" data-moq="10">Harga Frozen Duck</button>
+          <!--<button class="btn-moq" data-moq="50">Minimal 50 Karung</button>
+          <button class="btn-moq" data-moq="100">Minimal 100 Karung</button>
+          <button class="btn-moq" data-moq="200">Minimal 200 Karung</button>
+          <button class="btn-moq" data-moq="300">Minimal 300 Karung</button>-->
+		  <button class="btn-moq" data-moq="hotel">Harga Horeca</button>
+		  <button class="btn-moq" data-moq="winglok">Harga Winglok</button>
+		  <button class="btn-moq" data-moq="cfc">Harga CFC</button>
+        </div>
+
+        <div class="action-buttons">
+		<select id="customer-select" class="customer-select">
+		<option value="">-- Tanpa Nama Customer --</option>
+			<option>Ahdian (Resto Bebek Rica-Rica)</option>
+			<option>Ahmad Rofiqi</option>
+			<option>Ahmad Romli</option>
+			<option>Ahmad Sanuri</option>
+			<option>Ahmad Yani</option>
+			<option>Aji Sartono</option>
+			<option>Astani Hendri Arif</option>
+			<option>Beni</option>
+			<option>Cash Office Jakarta</option>
+			<option>CV Tenard Jaya</option>
+			<option>CV Sukses Makmur</option>
+			<option>CV Boga Canton Mandiri (Resto Mie Tiong Sim)</option>
+			<option>Deni Priyansyah</option>
+			<option>Deva Fajar Iputra</option>
+			<option>Edi Sucipto</option>
+			<option>Emmul</option>
+			<option>Fadlan</option>
+			<option>Haryono</option>
+			<option>Joko Agus Haryono</option>
+			<option>Joko Permadi</option>
+			<option>Joko Purnomo</option>
+			<option>Kent Wijaya</option>
+			<option>Lilis Karina</option>
+			<option>Maswaroh</option>
+			<option>Miftah Fariq</option>
+			<option>Moh Di Ah</option>
+			<option>Mohammad Kun Lilyaqin (Resto Bebek Merakyat)</option>
+			<option>Nurul Fajriyah</option>
+			<option>Oka Suprapto (Resto Yung Ci)</option>
+			<option>Parnanto</option>
+			<option>PT Femalindo Karya Sejahtera</option>
+			<option>PT Jagad Frozen Foods</option>
+			<option>PT Nabio</option>
+			<option>PT Sendang Rejeki Binangkit</option>
+			<option>PT Sumber Natural Indonesia (Resto Golden Lamian)</option>
+			<option>PT Twelve Nippindo Paradiso (Resto Twelve Chinese Dining)</option>
+			<option>PT Malindo Food Delight</option>
+			<option>PT Sembilan Sejahtera</option>
+			<option>Rahman</option>
+			<option>Rio Ridwan Maulana</option>
+			<option>Santo</option>
+			<option>Sasmito</option>
+			<option>Siladin</option>
+			<option>Sudjadi</option>
+			<option>Sukarni</option>
+			<option>Supriyanto (Resto Dapoer Langganan)</option>
+			<option>Teguh Nurcipto</option>
+			<option>Tilakhur Rahman</option>
+			<option>Tjhin Men Kiat</option>
+			<option>Yatin</option>
+      </select>
+          <button id="btn-print" class="btn-print" style="display:none;">🖨 Buat Table</button>
+		  <button id="btn-copy-wa" class="btn-print">📋 Buat FO</button>
+          <button id="btn-reset" class="btn-reset">↺ Reset Semua</button>
+		  <button id="btn-download-html" class="btn-print" style="display:none;">💾 Download HTML</button>
+
+		  <input type="file" id="import-excel" accept=".xlsx, .xls" hidden="">
+			<button id="btn-import" class="btn-print" style="display:none;">📥 Import Excel</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="price-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Size</th>
+              <th>Karung</th>
+              <th>Ekor</th>
+              <th>T.Kg</th>
+              <th>Price/Kg</th>
+              <th>Price/Ekor</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody><tr><td>1</td><td>0.6-0.7</td><td><input type="number" min="0" class="box-input" data-index="0"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>27.300</td><td data-role="total">Rp 0</td></tr><tr><td>2</td><td>0.7-0.8</td><td><input type="number" min="0" class="box-input" data-index="1"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>32.250</td><td data-role="total">Rp 0</td></tr><tr><td>3</td><td>0.8-0.9</td><td><input type="number" min="0" class="box-input" data-index="2"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>36.550</td><td data-role="total">Rp 0</td></tr><tr><td>4</td><td>0.9-1.0</td><td><input type="number" min="0" class="box-input" data-index="3"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>40.850</td><td data-role="total">Rp 0</td></tr><tr><td>5</td><td>1.0-1.1</td><td><input type="number" min="0" class="box-input" data-index="4"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>45.150</td><td data-role="total">Rp 0</td></tr><tr><td>6</td><td>1.1-1.2</td><td><input type="number" min="0" class="box-input" data-index="5"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>4.829.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>7</td><td>1.2-1.3</td><td><input type="number" min="0" class="box-input" data-index="6"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>52.500</td><td data-role="total">Rp 0</td></tr><tr><td>8</td><td>1.3-1.4</td><td><input type="number" min="0" class="box-input" data-index="7"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>5.670.000.000.000.001</td><td data-role="total">Rp 0</td></tr><tr><td>9</td><td>1.4-1.5</td><td><input type="number" min="0" class="box-input" data-index="8"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>60.900</td><td data-role="total">Rp 0</td></tr><tr><td>10</td><td>1.5-1.6</td><td><input type="number" min="0" class="box-input" data-index="9"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>63.550</td><td data-role="total">Rp 0</td></tr><tr><td>11</td><td>1.6-1.7</td><td><input type="number" min="0" class="box-input" data-index="10"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>67.650</td><td data-role="total">Rp 0</td></tr><tr><td>12</td><td>1.7-1.8</td><td><input type="number" min="0" class="box-input" data-index="11"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>73.500</td><td data-role="total">Rp 0</td></tr><tr><td>13</td><td>1.8-1.9</td><td><input type="number" min="0" class="box-input" data-index="12"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>77.700</td><td data-role="total">Rp 0</td></tr><tr><td>14</td><td>1.9-2.0</td><td><input type="number" min="0" class="box-input" data-index="13"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>81.900</td><td data-role="total">Rp 0</td></tr><tr><td>15</td><td>2.0-2.1</td><td><input type="number" min="0" class="box-input" data-index="14"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>8.609.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>16</td><td>2.1-2.2</td><td><input type="number" min="0" class="box-input" data-index="15"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>90.300</td><td data-role="total">Rp 0</td></tr><tr><td>17</td><td>2.2-2.3</td><td><input type="number" min="0" class="box-input" data-index="16"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>94.500</td><td data-role="total">Rp 0</td></tr><tr><td>18</td><td>2.3-2.4</td><td><input type="number" min="0" class="box-input" data-index="17"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>98.700</td><td data-role="total">Rp 0</td></tr><tr><td>19</td><td>2.4-2.5</td><td><input type="number" min="0" class="box-input" data-index="18"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>10.290.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>20</td><td>2.5-2.6</td><td><input type="number" min="0" class="box-input" data-index="19"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>10.710.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>21</td><td>2.6-2.7</td><td><input type="number" min="0" class="box-input" data-index="20"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>111.300</td><td data-role="total">Rp 0</td></tr><tr><td>22</td><td>2.7-2.8</td><td><input type="number" min="0" class="box-input" data-index="21"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>115.500</td><td data-role="total">Rp 0</td></tr><tr><td>23</td><td>2.8-2.9</td><td><input type="number" min="0" class="box-input" data-index="22"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.800</td><td>119.130</td><td data-role="total">Rp 0</td></tr><tr><td>24</td><td>2.9-3.0</td><td><input type="number" min="0" class="box-input" data-index="23"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>12.095.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>25</td><td>&gt;= 3.0</td><td><input type="number" min="0" class="box-input" data-index="24"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>40.000</td><td>128.000</td><td data-role="total">Rp 0</td></tr><tr><td>26</td><td>0.6-0.7 Grade B</td><td><input type="number" min="0" class="box-input" data-index="25"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>26.650</td><td data-role="total">Rp 0</td></tr><tr><td>27</td><td>0.7-0.8 Grade B</td><td><input type="number" min="0" class="box-input" data-index="26"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>31.500</td><td data-role="total">Rp 0</td></tr><tr><td>28</td><td>0.8-0.9 Grade B</td><td><input type="number" min="0" class="box-input" data-index="27"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>35.700</td><td data-role="total">Rp 0</td></tr><tr><td>29</td><td>0.9-1.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="28"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>39.900</td><td data-role="total">Rp 0</td></tr><tr><td>30</td><td>1.0-1.1 Grade B</td><td><input type="number" min="0" class="box-input" data-index="29"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>44.100</td><td data-role="total">Rp 0</td></tr><tr><td>31</td><td>1.1-1.2 Grade B</td><td><input type="number" min="0" class="box-input" data-index="30"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>4.714.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>32</td><td>1.2-1.3 Grade B</td><td><input type="number" min="0" class="box-input" data-index="31"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>51.250</td><td data-role="total">Rp 0</td></tr><tr><td>33</td><td>1.3-1.4 Grade B</td><td><input type="number" min="0" class="box-input" data-index="32"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>5.535.000.000.000.001</td><td data-role="total">Rp 0</td></tr><tr><td>34</td><td>1.4-1.5 Grade B</td><td><input type="number" min="0" class="box-input" data-index="33"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>59.450</td><td data-role="total">Rp 0</td></tr><tr><td>35</td><td>1.5-1.6 Grade B</td><td><input type="number" min="0" class="box-input" data-index="34"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>40.000</td><td>62.000</td><td data-role="total">Rp 0</td></tr><tr><td>36</td><td>1.6-1.7 Grade B</td><td><input type="number" min="0" class="box-input" data-index="35"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>40.000</td><td>66.000</td><td data-role="total">Rp 0</td></tr><tr><td>37</td><td>1.7-1.8 Grade B</td><td><input type="number" min="0" class="box-input" data-index="36"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>71.750</td><td data-role="total">Rp 0</td></tr><tr><td>38</td><td>1.8-1.9 Grade B</td><td><input type="number" min="0" class="box-input" data-index="37"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>75.850</td><td data-role="total">Rp 0</td></tr><tr><td>39</td><td>1.9-2.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="38"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>79.950</td><td data-role="total">Rp 0</td></tr><tr><td>40</td><td>2.0-2.1 Grade B</td><td><input type="number" min="0" class="box-input" data-index="39"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>8.404.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>41</td><td>2.1-2.2 Grade B</td><td><input type="number" min="0" class="box-input" data-index="40"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>88.150</td><td data-role="total">Rp 0</td></tr><tr><td>42</td><td>2.2-2.3 Grade B</td><td><input type="number" min="0" class="box-input" data-index="41"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>92.250</td><td data-role="total">Rp 0</td></tr><tr><td>43</td><td>2.3-2.4 Grade B</td><td><input type="number" min="0" class="box-input" data-index="42"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>96.350</td><td data-role="total">Rp 0</td></tr><tr><td>44</td><td>2.4-2.5 Grade B</td><td><input type="number" min="0" class="box-input" data-index="43"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>10.045.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>45</td><td>2.5-2.6 Grade B</td><td><input type="number" min="0" class="box-input" data-index="44"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>10.455.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>46</td><td>2.6-2.7 Grade B</td><td><input type="number" min="0" class="box-input" data-index="45"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>108.650</td><td data-role="total">Rp 0</td></tr><tr><td>47</td><td>2.7-2.8 Grade B</td><td><input type="number" min="0" class="box-input" data-index="46"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>112.750</td><td data-role="total">Rp 0</td></tr><tr><td>48</td><td>2.8-2.9 Grade B</td><td><input type="number" min="0" class="box-input" data-index="47"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>40.800</td><td>116.280</td><td data-role="total">Rp 0</td></tr><tr><td>49</td><td>2.9-3.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="48"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>40.000</td><td>118.000</td><td data-role="total">Rp 0</td></tr><tr><td>50</td><td>&gt;= 3.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="49"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>39.000</td><td>124.800</td><td data-role="total">Rp 0</td></tr></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">TOTAL</td>
+              <td id="total-box">0</td>
+              <td id="total-ekor">0</td>
+              <td id="total-kg">0.00</td>
+              <td></td>
+              <td></td>
+              <td id="grand-total">Rp 0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="summary">
+        <div class="summary-item">
+          <div class="summary-label">Total Karung</div>
+          <div class="summary-value" id="summary-box">0</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Total Ekor</div>
+          <div class="summary-value" id="summary-ekor">0</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Total Kg</div>
+          <div class="summary-value" id="summary-kg">0.00</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Grand Total</div>
+          <div class="summary-value" id="summary-grand">Rp 0</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+  <script>
+  // DATA HARGA DARI EXCEL (semua size + Grade B)
+  const priceTables = {
+  "10": [
+    {
+      "size": "0.6-0.7",
+      "priceKg": 42000,
+      "priceEkor": 27300
+    },
+    {
+      "size": "0.7-0.8",
+      "priceKg": 43000,
+      "priceEkor": 32250
+    },
+    {
+      "size": "0.8-0.9",
+      "priceKg": 43000,
+      "priceEkor": 36550
+    },
+    {
+      "size": "0.9-1.0",
+      "priceKg": 43000,
+      "priceEkor": 40850
+    },
+    {
+      "size": "1.0-1.1",
+      "priceKg": 43000,
+      "priceEkor": 45150
+    },
+    {
+      "size": "1.1-1.2",
+      "priceKg": 42000,
+      "priceEkor": 48300
+    },
+    {
+      "size": "1.2-1.3",
+      "priceKg": 42000,
+      "priceEkor": 52500
+    },
+    {
+      "size": "1.3-1.4",
+      "priceKg": 42000,
+      "priceEkor": 56700
+    },
+    {
+      "size": "1.4-1.5",
+      "priceKg": 42000,
+      "priceEkor": 60900
+    },
+    {
+      "size": "1.5-1.6",
+      "priceKg": 41000,
+      "priceEkor": 63550
+    },
+    {
+      "size": "1.6-1.7",
+      "priceKg": 41000,
+      "priceEkor": 67650
+    },
+    {
+      "size": "1.7-1.8",
+      "priceKg": 42000,
+      "priceEkor": 73500
+    },
+    {
+      "size": "1.8-1.9",
+      "priceKg": 42000,
+      "priceEkor": 77700
+    },
+    {
+      "size": "1.9-2.0",
+      "priceKg": 42000,
+      "priceEkor": 81900
+    },
+    {
+      "size": "2.0-2.1",
+      "priceKg": 42000,
+      "priceEkor": 86100
+    },
+    {
+      "size": "2.1-2.2",
+      "priceKg": 42000,
+      "priceEkor": 90300
+    },
+    {
+      "size": "2.2-2.3",
+      "priceKg": 42000,
+      "priceEkor": 94500
+    },
+    {
+      "size": "2.3-2.4",
+      "priceKg": 42000,
+      "priceEkor": 98700
+    },
+    {
+      "size": "2.4-2.5",
+      "priceKg": 42000,
+      "priceEkor": 102900
+    },
+    {
+      "size": "2.5-2.6",
+      "priceKg": 42000,
+      "priceEkor": 107100
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 42000,
+      "priceEkor": 111300
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 42000,
+      "priceEkor": 115500
+    },
+    {
+      "size": "2.8-2.9",
+      "priceKg": 41800,
+      "priceEkor": 119130
+    },
+    {
+      "size": "2.9-3.0",
+      "priceKg": 41000,
+      "priceEkor": 120950
+    },
+    {
+      "size": ">= 3.0",
+      "priceKg": 39500,
+      "priceEkor": 126400
+    },
+    {
+      "size": "0.6-0.7 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 26650
+    },
+    {
+      "size": "0.7-0.8 Grade B",
+      "priceKg": 42000,
+      "priceEkor": 31500
+    },
+    {
+      "size": "0.8-0.9 Grade B",
+      "priceKg": 42000,
+      "priceEkor": 35700
+    },
+    {
+      "size": "0.9-1.0 Grade B",
+      "priceKg": 42000,
+      "priceEkor": 39900
+    },
+    {
+      "size": "1.0-1.1 Grade B",
+      "priceKg": 42000,
+      "priceEkor": 44100
+    },
+    {
+      "size": "1.1-1.2 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 47150
+    },
+    {
+      "size": "1.2-1.3 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 51250
+    },
+    {
+      "size": "1.3-1.4 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 55350
+    },
+    {
+      "size": "1.4-1.5 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 59450
+    },
+    {
+      "size": "1.5-1.6 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 62000
+    },
+    {
+      "size": "1.6-1.7 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 66000
+    },
+    {
+      "size": "1.7-1.8 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 71750
+    },
+    {
+      "size": "1.8-1.9 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 75850
+    },
+    {
+      "size": "1.9-2.0 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 79950
+    },
+    {
+      "size": "2.0-2.1 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 84050
+    },
+    {
+      "size": "2.1-2.2 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 88150
+    },
+    {
+      "size": "2.2-2.3 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 92250
+    },
+    {
+      "size": "2.3-2.4 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 96350
+    },
+    {
+      "size": "2.4-2.5 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 100450
+    },
+    {
+      "size": "2.5-2.6 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 104550
+    },
+    {
+      "size": "2.6-2.7 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 108650
+    },
+    {
+      "size": "2.7-2.8 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 112750
+    },
+    {
+      "size": "2.8-2.9 Grade B",
+      "priceKg": 40800,
+      "priceEkor": 116280
+    },
+    {
+      "size": "2.9-3.0 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 118000
+    },
+    {
+      "size": ">= 3.0 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 123200
+    }
+  ],
+  "50": [
+    {
+      "size": "0.6-0.7",
+      "priceKg": 41000,
+      "priceEkor": 26650
+    },
+    {
+      "size": "0.7-0.8",
+      "priceKg": 42000,
+      "priceEkor": 31500
+    },
+    {
+      "size": "0.8-0.9",
+      "priceKg": 42000,
+      "priceEkor": 35700
+    },
+    {
+      "size": "0.9-1.0",
+      "priceKg": 42000,
+      "priceEkor": 39900
+    },
+    {
+      "size": "1.0-1.1",
+      "priceKg": 42000,
+      "priceEkor": 44100
+    },
+    {
+      "size": "1.1-1.2",
+      "priceKg": 41000,
+      "priceEkor": 47150
+    },
+    {
+      "size": "1.2-1.3",
+      "priceKg": 41000,
+      "priceEkor": 51250
+    },
+    {
+      "size": "1.3-1.4",
+      "priceKg": 41000,
+      "priceEkor": 55350
+    },
+    {
+      "size": "1.4-1.5",
+      "priceKg": 41000,
+      "priceEkor": 59450
+    },
+    {
+      "size": "1.5-1.6",
+      "priceKg": 40000,
+      "priceEkor": 62000
+    },
+    {
+      "size": "1.6-1.7",
+      "priceKg": 40000,
+      "priceEkor": 66000
+    },
+    {
+      "size": "1.7-1.8",
+      "priceKg": 41000,
+      "priceEkor": 71750
+    },
+    {
+      "size": "1.8-1.9",
+      "priceKg": 41000,
+      "priceEkor": 75850
+    },
+    {
+      "size": "1.9-2.0",
+      "priceKg": 41000,
+      "priceEkor": 79950
+    },
+    {
+      "size": "2.0-2.1",
+      "priceKg": 41000,
+      "priceEkor": 84050
+    },
+    {
+      "size": "2.1-2.2",
+      "priceKg": 41000,
+      "priceEkor": 88150
+    },
+    {
+      "size": "2.2-2.3",
+      "priceKg": 41000,
+      "priceEkor": 92250
+    },
+    {
+      "size": "2.3-2.4",
+      "priceKg": 41000,
+      "priceEkor": 96350
+    },
+    {
+      "size": "2.4-2.5",
+      "priceKg": 41000,
+      "priceEkor": 100450
+    },
+    {
+      "size": "2.5-2.6",
+      "priceKg": 41000,
+      "priceEkor": 104550
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 41000,
+      "priceEkor": 108650
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 41000,
+      "priceEkor": 112750
+    },
+    {
+      "size": "2.8-2.9",
+      "priceKg": 40800,
+      "priceEkor": 116280
+    },
+    {
+      "size": "2.9-3.0",
+      "priceKg": 40000,
+      "priceEkor": 118000
+    },
+    {
+      "size": ">= 3.0",
+      "priceKg": 38500,
+      "priceEkor": 123200
+    },
+    {
+      "size": "0.6-0.7 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 26000
+    },
+    {
+      "size": "0.7-0.8 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 30750
+    },
+    {
+      "size": "0.8-0.9 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 34850
+    },
+    {
+      "size": "0.9-1.0 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 38950
+    },
+    {
+      "size": "1.0-1.1 Grade B",
+      "priceKg": 41000,
+      "priceEkor": 43050
+    },
+    {
+      "size": "1.1-1.2 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 46000
+    },
+    {
+      "size": "1.2-1.3 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 50000
+    },
+    {
+      "size": "1.3-1.4 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 54000
+    },
+    {
+      "size": "1.4-1.5 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 58000
+    },
+    {
+      "size": "1.5-1.6 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 60450
+    },
+    {
+      "size": "1.6-1.7 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 64350
+    },
+    {
+      "size": "1.7-1.8 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 70000
+    },
+    {
+      "size": "1.8-1.9 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 74000
+    },
+    {
+      "size": "1.9-2.0 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 78000
+    },
+    {
+      "size": "2.0-2.1 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 82000
+    },
+    {
+      "size": "2.1-2.2 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 86000
+    },
+    {
+      "size": "2.2-2.3 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 90000
+    },
+    {
+      "size": "2.3-2.4 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 94000
+    },
+    {
+      "size": "2.4-2.5 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 98000
+    },
+    {
+      "size": "2.5-2.6 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 102000
+    },
+    {
+      "size": "2.6-2.7 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 106000
+    },
+    {
+      "size": "2.7-2.8 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 110000
+    },
+    {
+      "size": "2.8-2.9 Grade B",
+      "priceKg": 39800,
+      "priceEkor": 113430
+    },
+    {
+      "size": "2.9-3.0 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 115050
+    },
+    {
+      "size": ">= 3.0 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 120000
+    }
+  ],
+  "100": [
+    {
+      "size": "0.6-0.7",
+      "priceKg": 40000,
+      "priceEkor": 26000
+    },
+    {
+      "size": "0.7-0.8",
+      "priceKg": 41000,
+      "priceEkor": 30750
+    },
+    {
+      "size": "0.8-0.9",
+      "priceKg": 41000,
+      "priceEkor": 34850
+    },
+    {
+      "size": "0.9-1.0",
+      "priceKg": 41000,
+      "priceEkor": 38950
+    },
+    {
+      "size": "1.0-1.1",
+      "priceKg": 41000,
+      "priceEkor": 43050
+    },
+    {
+      "size": "1.1-1.2",
+      "priceKg": 40000,
+      "priceEkor": 46000
+    },
+    {
+      "size": "1.2-1.3",
+      "priceKg": 40000,
+      "priceEkor": 50000
+    },
+    {
+      "size": "1.3-1.4",
+      "priceKg": 40000,
+      "priceEkor": 54000
+    },
+    {
+      "size": "1.4-1.5",
+      "priceKg": 40000,
+      "priceEkor": 58000
+    },
+    {
+      "size": "1.5-1.6",
+      "priceKg": 39000,
+      "priceEkor": 60450
+    },
+    {
+      "size": "1.6-1.7",
+      "priceKg": 39000,
+      "priceEkor": 64350
+    },
+    {
+      "size": "1.7-1.8",
+      "priceKg": 40000,
+      "priceEkor": 70000
+    },
+    {
+      "size": "1.8-1.9",
+      "priceKg": 40000,
+      "priceEkor": 74000
+    },
+    {
+      "size": "1.9-2.0",
+      "priceKg": 40000,
+      "priceEkor": 78000
+    },
+    {
+      "size": "2.0-2.1",
+      "priceKg": 40000,
+      "priceEkor": 82000
+    },
+    {
+      "size": "2.1-2.2",
+      "priceKg": 40000,
+      "priceEkor": 86000
+    },
+    {
+      "size": "2.2-2.3",
+      "priceKg": 40000,
+      "priceEkor": 90000
+    },
+    {
+      "size": "2.3-2.4",
+      "priceKg": 40000,
+      "priceEkor": 94000
+    },
+    {
+      "size": "2.4-2.5",
+      "priceKg": 40000,
+      "priceEkor": 98000
+    },
+    {
+      "size": "2.5-2.6",
+      "priceKg": 40000,
+      "priceEkor": 102000
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 40000,
+      "priceEkor": 106000
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 40000,
+      "priceEkor": 110000
+    },
+    {
+      "size": "2.8-2.9",
+      "priceKg": 39800,
+      "priceEkor": 113430
+    },
+    {
+      "size": "2.9-3.0",
+      "priceKg": 39000,
+      "priceEkor": 115050
+    },
+    {
+      "size": ">= 3.0",
+      "priceKg": 37500,
+      "priceEkor": 120000
+    },
+    {
+      "size": "0.6-0.7 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 25350
+    },
+    {
+      "size": "0.7-0.8 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 30000
+    },
+    {
+      "size": "0.8-0.9 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 34000
+    },
+    {
+      "size": "0.9-1.0 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 38000
+    },
+    {
+      "size": "1.0-1.1 Grade B",
+      "priceKg": 40000,
+      "priceEkor": 42000
+    },
+    {
+      "size": "1.1-1.2 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 44850
+    },
+    {
+      "size": "1.2-1.3 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 48750
+    },
+    {
+      "size": "1.3-1.4 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 52650
+    },
+    {
+      "size": "1.4-1.5 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 56550
+    },
+    {
+      "size": "1.5-1.6 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 58900
+    },
+    {
+      "size": "1.6-1.7 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 62700
+    },
+    {
+      "size": "1.7-1.8 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 68250
+    },
+    {
+      "size": "1.8-1.9 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 72150
+    },
+    {
+      "size": "1.9-2.0 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 76050
+    },
+    {
+      "size": "2.0-2.1 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 79950
+    },
+    {
+      "size": "2.1-2.2 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 83850
+    },
+    {
+      "size": "2.2-2.3 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 87750
+    },
+    {
+      "size": "2.3-2.4 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 91650
+    },
+    {
+      "size": "2.4-2.5 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 95550
+    },
+    {
+      "size": "2.5-2.6 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 99450
+    },
+    {
+      "size": "2.6-2.7 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 103350
+    },
+    {
+      "size": "2.7-2.8 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 107250
+    },
+    {
+      "size": "2.8-2.9 Grade B",
+      "priceKg": 38800,
+      "priceEkor": 110580
+    },
+    {
+      "size": "2.9-3.0 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 112100
+    },
+    {
+      "size": ">= 3.0 Grade B",
+      "priceKg": 36500,
+      "priceEkor": 116800
+    }
+  ],
+  "200": [
+    {
+      "size": "0.6-0.7",
+      "priceKg": 39500,
+      "priceEkor": 25675
+    },
+    {
+      "size": "0.7-0.8",
+      "priceKg": 40500,
+      "priceEkor": 30375
+    },
+    {
+      "size": "0.8-0.9",
+      "priceKg": 40500,
+      "priceEkor": 34425
+    },
+    {
+      "size": "0.9-1.0",
+      "priceKg": 40500,
+      "priceEkor": 38475
+    },
+    {
+      "size": "1.0-1.1",
+      "priceKg": 40500,
+      "priceEkor": 42525
+    },
+    {
+      "size": "1.1-1.2",
+      "priceKg": 39500,
+      "priceEkor": 45425
+    },
+    {
+      "size": "1.2-1.3",
+      "priceKg": 39500,
+      "priceEkor": 49375
+    },
+    {
+      "size": "1.3-1.4",
+      "priceKg": 39500,
+      "priceEkor": 53325
+    },
+    {
+      "size": "1.4-1.5",
+      "priceKg": 39500,
+      "priceEkor": 57275
+    },
+    {
+      "size": "1.5-1.6",
+      "priceKg": 38000,
+      "priceEkor": 58900
+    },
+    {
+      "size": "1.6-1.7",
+      "priceKg": 38000,
+      "priceEkor": 62700
+    },
+    {
+      "size": "1.7-1.8",
+      "priceKg": 39000,
+      "priceEkor": 68250
+    },
+    {
+      "size": "1.8-1.9",
+      "priceKg": 39000,
+      "priceEkor": 72150
+    },
+    {
+      "size": "1.9-2.0",
+      "priceKg": 39000,
+      "priceEkor": 76050
+    },
+    {
+      "size": "2.0-2.1",
+      "priceKg": 38500,
+      "priceEkor": 78925
+    },
+    {
+      "size": "2.1-2.2",
+      "priceKg": 38500,
+      "priceEkor": 82775
+    },
+    {
+      "size": "2.2-2.3",
+      "priceKg": 38500,
+      "priceEkor": 86625
+    },
+    {
+      "size": "2.3-2.4",
+      "priceKg": 38500,
+      "priceEkor": 90475
+    },
+    {
+      "size": "2.4-2.5",
+      "priceKg": 39000,
+      "priceEkor": 95550
+    },
+    {
+      "size": "2.5-2.6",
+      "priceKg": 39000,
+      "priceEkor": 99450
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 39000,
+      "priceEkor": 103350
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 39000,
+      "priceEkor": 107250
+    },
+    {
+      "size": "2.8-2.9",
+      "priceKg": 38800,
+      "priceEkor": 110580
+    },
+    {
+      "size": "2.9-3.0",
+      "priceKg": 38000,
+      "priceEkor": 112100
+    },
+    {
+      "size": ">= 3.0",
+      "priceKg": 37500,
+      "priceEkor": 120000
+    },
+    {
+      "size": "0.6-0.7 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 25025
+    },
+    {
+      "size": "0.7-0.8 Grade B",
+      "priceKg": 39500,
+      "priceEkor": 29625
+    },
+    {
+      "size": "0.8-0.9 Grade B",
+      "priceKg": 39500,
+      "priceEkor": 33575
+    },
+    {
+      "size": "0.9-1.0 Grade B",
+      "priceKg": 39500,
+      "priceEkor": 37525
+    },
+    {
+      "size": "1.0-1.1 Grade B",
+      "priceKg": 39500,
+      "priceEkor": 41475
+    },
+    {
+      "size": "1.1-1.2 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 44275
+    },
+    {
+      "size": "1.2-1.3 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 48125
+    },
+    {
+      "size": "1.3-1.4 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 51975
+    },
+    {
+      "size": "1.4-1.5 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 55825
+    },
+    {
+      "size": "1.5-1.6 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 57350
+    },
+    {
+      "size": "1.6-1.7 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 61050
+    },
+    {
+      "size": "1.7-1.8 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 66500
+    },
+    {
+      "size": "1.8-1.9 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 70300
+    },
+    {
+      "size": "1.9-2.0 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 74100
+    },
+    {
+      "size": "2.0-2.1 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 76875
+    },
+    {
+      "size": "2.1-2.2 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 80625
+    },
+    {
+      "size": "2.2-2.3 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 84375
+    },
+    {
+      "size": "2.3-2.4 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 88125
+    },
+    {
+      "size": "2.4-2.5 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 93100
+    },
+    {
+      "size": "2.5-2.6 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 96900
+    },
+    {
+      "size": "2.6-2.7 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 100700
+    },
+    {
+      "size": "2.7-2.8 Grade B",
+      "priceKg": 38000,
+      "priceEkor": 104500
+    },
+    {
+      "size": "2.8-2.9 Grade B",
+      "priceKg": 37800,
+      "priceEkor": 107730
+    },
+    {
+      "size": "2.9-3.0 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 109150
+    },
+    {
+      "size": ">= 3.0 Grade B",
+      "priceKg": 36500,
+      "priceEkor": 116800
+    }
+  ],
+  "300": [
+    {
+      "size": "0.6-0.7",
+      "priceKg": 38500,
+      "priceEkor": 25025
+    },
+    {
+      "size": "0.7-0.8",
+      "priceKg": 40000,
+      "priceEkor": 30000
+    },
+    {
+      "size": "0.8-0.9",
+      "priceKg": 40000,
+      "priceEkor": 34000
+    },
+    {
+      "size": "0.9-1.0",
+      "priceKg": 39500,
+      "priceEkor": 37525
+    },
+    {
+      "size": "1.0-1.1",
+      "priceKg": 40000,
+      "priceEkor": 42000
+    },
+    {
+      "size": "1.1-1.2",
+      "priceKg": 38500,
+      "priceEkor": 44275
+    },
+    {
+      "size": "1.2-1.3",
+      "priceKg": 38500,
+      "priceEkor": 48125
+    },
+    {
+      "size": "1.3-1.4",
+      "priceKg": 38500,
+      "priceEkor": 51975
+    },
+    {
+      "size": "1.4-1.5",
+      "priceKg": 38500,
+      "priceEkor": 55825
+    },
+    {
+      "size": "1.5-1.6",
+      "priceKg": 37000,
+      "priceEkor": 57350
+    },
+    {
+      "size": "1.6-1.7",
+      "priceKg": 37000,
+      "priceEkor": 61050
+    },
+    {
+      "size": "1.7-1.8",
+      "priceKg": 38000,
+      "priceEkor": 66500
+    },
+    {
+      "size": "1.8-1.9",
+      "priceKg": 38000,
+      "priceEkor": 70300
+    },
+    {
+      "size": "1.9-2.0",
+      "priceKg": 38000,
+      "priceEkor": 74100
+    },
+    {
+      "size": "2.0-2.1",
+      "priceKg": 37500,
+      "priceEkor": 76875
+    },
+    {
+      "size": "2.1-2.2",
+      "priceKg": 37500,
+      "priceEkor": 80625
+    },
+    {
+      "size": "2.2-2.3",
+      "priceKg": 37500,
+      "priceEkor": 84375
+    },
+    {
+      "size": "2.3-2.4",
+      "priceKg": 37500,
+      "priceEkor": 88125
+    },
+    {
+      "size": "2.4-2.5",
+      "priceKg": 38000,
+      "priceEkor": 93100
+    },
+    {
+      "size": "2.5-2.6",
+      "priceKg": 38000,
+      "priceEkor": 96900
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 38000,
+      "priceEkor": 100700
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 38000,
+      "priceEkor": 104500
+    },
+    {
+      "size": "2.8-2.9",
+      "priceKg": 37800,
+      "priceEkor": 107730
+    },
+    {
+      "size": "2.9-3.0",
+      "priceKg": 37000,
+      "priceEkor": 109150
+    },
+    {
+      "size": ">= 3.0",
+      "priceKg": 36500,
+      "priceEkor": 116800
+    },
+    {
+      "size": "0.6-0.7 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 24375
+    },
+    {
+      "size": "0.7-0.8 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 29250
+    },
+    {
+      "size": "0.8-0.9 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 33150
+    },
+    {
+      "size": "0.9-1.0 Grade B",
+      "priceKg": 38500,
+      "priceEkor": 36575
+    },
+    {
+      "size": "1.0-1.1 Grade B",
+      "priceKg": 39000,
+      "priceEkor": 40950
+    },
+    {
+      "size": "1.1-1.2 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 43125
+    },
+    {
+      "size": "1.2-1.3 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 46875
+    },
+    {
+      "size": "1.3-1.4 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 50625
+    },
+    {
+      "size": "1.4-1.5 Grade B",
+      "priceKg": 37500,
+      "priceEkor": 54375
+    },
+    {
+      "size": "1.5-1.6 Grade B",
+      "priceKg": 36000,
+      "priceEkor": 55800
+    },
+    {
+      "size": "1.6-1.7 Grade B",
+      "priceKg": 36000,
+      "priceEkor": 59400
+    },
+    {
+      "size": "1.7-1.8 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 64750
+    },
+    {
+      "size": "1.8-1.9 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 68450
+    },
+    {
+      "size": "1.9-2.0 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 72150
+    },
+    {
+      "size": "2.0-2.1 Grade B",
+      "priceKg": 36500,
+      "priceEkor": 74825
+    },
+    {
+      "size": "2.1-2.2 Grade B",
+      "priceKg": 36500,
+      "priceEkor": 78475
+    },
+    {
+      "size": "2.2-2.3 Grade B",
+      "priceKg": 36500,
+      "priceEkor": 82125
+    },
+    {
+      "size": "2.3-2.4 Grade B",
+      "priceKg": 36500,
+      "priceEkor": 85775
+    },
+    {
+      "size": "2.4-2.5 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 90650
+    },
+    {
+      "size": "2.5-2.6 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 94350
+    },
+    {
+      "size": "2.6-2.7 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 98050
+    },
+    {
+      "size": "2.7-2.8 Grade B",
+      "priceKg": 37000,
+      "priceEkor": 101750
+    },
+    {
+      "size": "2.8-2.9 Grade B",
+      "priceKg": 36800,
+      "priceEkor": 104880
+    },
+    {
+      "size": "2.9-3.0 Grade B",
+      "priceKg": 36000,
+      "priceEkor": 106200
+    },
+    {
+      "size": ">= 3.0 Grade B",
+      "priceKg": 35500,
+      "priceEkor": 113600
+    }
+  ],
+  "hotel": [
+    {
+      "size": "2.2-2.3",
+      "priceKg": 0,
+      "priceEkor": 99000
+    },
+    {
+      "size": "2.3-2.4",
+      "priceKg": 0,
+      "priceEkor": 99000
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 0,
+      "priceEkor": 114000
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 0,
+      "priceEkor": 114000
+    }
+  ],
+  "winglok": [
+    {
+      "size": "2.5-2.6",
+      "priceKg": 0,
+      "priceEkor": 107100
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 0,
+      "priceEkor": 111300
+    },
+    {
+      "size": "2.7-2.8",
+      "priceKg": 0,
+      "priceEkor": 115500
+    },
+    {
+      "size": "2.8-2.9",
+      "priceKg": 0,
+      "priceEkor": 119130
+    }
+  ],
+  "cfc": [
+    {
+      "size": "2.3-2.4",
+      "priceKg": 0,
+      "priceEkor": 103000
+    },
+    {
+      "size": "2.4-2.5",
+      "priceKg": 0,
+      "priceEkor": 107000
+    },
+    {
+      "size": "2.5-2.6",
+      "priceKg": 0,
+      "priceEkor": 111000
+    },
+    {
+      "size": "2.6-2.7",
+      "priceKg": 0,
+      "priceEkor": 116000
+    }
+  ]
+};
+
+  // ISI EKOR PER BOX (bisa kamu sesuaikan dengan aturanmu)
+  const piecesPerBox = {
+    "0.6-0.7": 15,
+    "0.7-0.8": 15,
+    "0.8-0.9": 15,
+    "0.9-1.0": 15,
+    "1.0-1.1": 12,
+    "1.1-1.2": 12,
+    "1.2-1.3": 10,
+    "1.3-1.4": 10,
+    "1.4-1.5": 9,
+    "1.5-1.6": 9,
+    "1.6-1.7": 8,
+    "1.7-1.8": 8,
+    "1.8-1.9": 6,
+    "1.9-2.0": 6,
+    "2.0-2.1": 6,
+    "2.1-2.2": 6,
+    "2.2-2.3": 6,
+    "2.3-2.4": 6,
+    "2.4-2.5": 6,
+    "2.5-2.6": 6,
+    "2.6-2.7": 6,
+    "2.7-2.8": 6,
+    "2.8-2.9": 5,
+    "2.9-3.0": 5,
+    ">= 3.0": 5,
+    "0.6-0.7 Grade B": 15,
+    "0.7-0.8 Grade B": 15,
+    "0.8-0.9 Grade B": 15,
+    "0.9-1.0 Grade B": 15,
+    "1.0-1.1 Grade B": 12,
+    "1.1-1.2 Grade B": 12,
+    "1.2-1.3 Grade B": 10,
+    "1.3-1.4 Grade B": 10,
+    "1.4-1.5 Grade B": 9,
+    "1.5-1.6 Grade B": 9,
+    "1.6-1.7 Grade B": 8,
+    "1.7-1.8 Grade B": 8,
+    "1.8-1.9 Grade B": 6,
+    "1.9-2.0 Grade B": 6,
+    "2.0-2.1 Grade B": 6,
+    "2.1-2.2 Grade B": 6,
+    "2.2-2.3 Grade B": 6,
+    "2.3-2.4 Grade B": 6,
+    "2.4-2.5 Grade B": 6,
+    "2.5-2.6 Grade B": 6,
+    "2.6-2.7 Grade B": 6,
+    "2.7-2.8 Grade B": 6,
+    "2.8-2.9 Grade B": 5,
+    "2.9-3.0 Grade B": 5,
+    "2.9-3.0 Grade B": 5,
+    "2.9-3.0 Grade B": 5,
+    ">= 3.0 Grade B": 5
+  };
+
+  function formatRupiah(number) {
+    if (isNaN(number)) return "Rp 0";
+    return "Rp " + number.toLocaleString("id-ID");
+  }
+
+  function parseSizeMidWeight(size) {
+    const tokens = String(size).split(" ");
+    // Contoh: "0.6-0.7" atau ">= 3.0 Grade B"
+    if (tokens[0] === ">=" && tokens.length > 1) {
+      const num = parseFloat(tokens[1]);
+      return isNaN(num) ? 3.0 : num;
+    }
+    const main = tokens[0];
+    const parts = main.split("-");
+    if (parts.length === 2) {
+      const a = parseFloat(parts[0]);
+      const b = parseFloat(parts[1]);
+      if (!isNaN(a) && !isNaN(b)) {
+        return (a + b) / 2;
+      }
+    }
+    return 1;
+  }
+
+  const tbody = document.querySelector("#price-table tbody");
+  let currentMOQ = "10";
+
+  function renderTable() {
+    tbody.innerHTML = "";
+    const rows = priceTables[currentMOQ] || [];
+
+    rows.forEach((row, index) => {
+      const tr = document.createElement("tr");
+
+      const tdNo = document.createElement("td");
+      tdNo.textContent = index + 1;
+      tr.appendChild(tdNo);
+
+      const tdSize = document.createElement("td");
+      tdSize.textContent = row.size;
+      tr.appendChild(tdSize);
+
+      const tdBox = document.createElement("td");
+      const input = document.createElement("input");
+      input.type = "number";
+      input.min = "0";
+      input.value = "";
+      input.className = "box-input";
+      input.dataset.index = index;
+      tdBox.appendChild(input);
+      tr.appendChild(tdBox);
+
+      const tdEkor = document.createElement("td");
+      tdEkor.textContent = "0";
+      tdEkor.dataset.role = "ekor";
+      tr.appendChild(tdEkor);
+
+      const tdKg = document.createElement("td");
+      tdKg.textContent = "0";
+      tdKg.dataset.role = "kg";
+      tr.appendChild(tdKg);
+
+      const tdPriceKg = document.createElement("td");
+      tdPriceKg.textContent = (row.priceKg || 0).toLocaleString("id-ID");
+      tr.appendChild(tdPriceKg);
+
+      const tdPriceEkor = document.createElement("td");
+      tdPriceEkor.textContent = (row.priceEkor || 0).toLocaleString("id-ID");
+      tr.appendChild(tdPriceEkor);
+
+      const tdTotal = document.createElement("td");
+      tdTotal.textContent = "0";
+      tdTotal.dataset.role = "total";
+      tr.appendChild(tdTotal);
+
+      tbody.appendChild(tr);
+    });
+
+    attachInputEvents();
+    recalcTotals();
+  }
+
+  function attachInputEvents() {
+    const inputs = tbody.querySelectorAll("input.box-input");
+    inputs.forEach(input => {
+      input.addEventListener("input", recalcTotals);
+    });
+  }
+
+  function recalcTotals() {
+    const rows = priceTables[currentMOQ] || [];
+    let totalBox = 0;
+    let totalEkor = 0;
+    let totalKg = 0;
+    let grandTotal = 0;
+
+    const trs = tbody.querySelectorAll("tr");
+
+    trs.forEach((tr, idx) => {
+      const rowData = rows[idx];
+      if (!rowData) return;
+
+      const size = rowData.size;
+      const priceEkor = rowData.priceEkor || 0;
+
+      const input = tr.querySelector("input.box-input");
+      const box = parseFloat(input.value) || 0;
+      totalBox += box;
+
+      const ekorPerBox = piecesPerBox[size] || 1;
+      const ekor = box * ekorPerBox;
+      const midWeight = parseSizeMidWeight(size);
+      let tKg;
+      if (size.includes(">= 3.0") || parseSizeMidWeight(size) >= 3.0) {
+        tKg = ekor * 3.2;
+      } else {
+        tKg = ekor * midWeight;
+      }
+
+      const totalPrice = ekor * priceEkor;
+
+      totalEkor += ekor;
+      totalKg += tKg;
+      grandTotal += totalPrice;
+
+      const tdEkor = tr.querySelector('td[data-role="ekor"]');
+      const tdKg = tr.querySelector('td[data-role="kg"]');
+      const tdTotal = tr.querySelector('td[data-role="total"]');
+
+      tdEkor.textContent = ekor.toLocaleString("id-ID");
+      tdKg.textContent = parseFloat(tKg.toFixed(2)).toString();
+      tdTotal.textContent = formatRupiah(totalPrice);
+	  
+	  // Highlight baris yang sudah diisi
+		if (box > 0) {
+		  tr.classList.add("row-filled");
+		} else {
+		  tr.classList.remove("row-filled");
+		}
+    });
+
+    document.getElementById("total-box").textContent = totalBox.toLocaleString("id-ID");
+    document.getElementById("total-ekor").textContent = totalEkor.toLocaleString("id-ID");
+    document.getElementById("total-kg").textContent = totalKg.toFixed(2);
+    document.getElementById("grand-total").textContent = formatRupiah(grandTotal);
+
+    document.getElementById("summary-box").textContent = totalBox.toLocaleString("id-ID");
+    document.getElementById("summary-ekor").textContent = totalEkor.toLocaleString("id-ID");
+    document.getElementById("summary-kg").textContent = totalKg.toFixed(2);
+    document.getElementById("summary-grand").textContent = formatRupiah(grandTotal);
+  }
+
+  const moqButtons = document.querySelectorAll(".btn-moq");
+  moqButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      moqButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentMOQ = btn.dataset.moq;
+	  
+	  const select = document.getElementById("customer-select");
+
+    if (currentMOQ === "hotel") {
+      select.innerHTML = `
+        <option value="">-- Tanpa Nama Customer --</option>
+		<option>PT Cipta Artha Sepuluh (Resto Suck My Duck)</option>
+		<option>PT Good Taste International (Resto Good Taste Indonesia)</option>
+        <option>PT Mutiara Permata Mulia (Ritz Carlton)</option>
+		<option>PT Permata Birama Sakti (JW Marriott) </option>
+		<option>PT Pacific Place Jakarta</option>
+      `;
+    }
+
+    else if (currentMOQ === "winglok") {
+      select.innerHTML = `
+        <option value="">-- Tanpa Nama Customer --</option>
+        <option>PT Lancar Inti Nusantara (Winglok/Wingheng)</option>
+		<option>PT Selera Boga Amerta (Winglok/Wingheng)</option>
+		<option>PT Selera Boga Asia (Winglok/Wingheng)</option>
+		<option>PT Selera Boga Indonesia (Winglok/Wingheng)</option>
+		<option>PT Selera Boga Tenteram (Winglok/Wingheng)</option>
+      `;
+    }
+	else if (currentMOQ === "cfc") {
+      select.innerHTML = `
+        <option>PT Pioneerindo Gourmet Int'l Tbk (CFC Group)</option>
+      `;
+    }
+
+    else {
+      select.innerHTML = `
+		<option value="">-- Tanpa Nama Customer --</option>
+			<option>Ahdian (Resto Bebek Rica-Rica)</option>
+			<option>Ahmad Rofiqi</option>
+			<option>Ahmad Romli</option>
+			<option>Ahmad Sanuri</option>
+			<option>Ahmad Yani</option>
+			<option>Aji Sartono</option>
+			<option>Astani Hendri Arif</option>
+			<option>Beni</option>
+			<option>Cash Office Jakarta</option>
+			<option>CV Tenard Jaya</option>
+			<option>CV Sukses Makmur</option>
+			<option>CV Boga Canton Mandiri (Resto Mie Tiong Sim)</option>
+			<option>Deni Priyansyah</option>
+			<option>Deva Fajar Iputra</option>
+			<option>Edi Sucipto</option>
+			<option>Emmul</option>
+			<option>Fadlan</option>
+			<option>Haryono</option>
+			<option>Joko Agus Haryono</option>
+			<option>Joko Permadi</option>
+			<option>Joko Purnomo</option>
+			<option>Kent Wijaya</option>
+			<option>Lilis Karina</option>
+			<option>Maswaroh</option>
+			<option>Miftah Fariq</option>
+			<option>Moh Di Ah</option>
+			<option>Mohammad Kun Lilyaqin (Resto Bebek Merakyat)</option>
+			<option>Nurul Fajriyah</option>
+			<option>Oka Suprapto (Resto Yung Ci)</option>
+			<option>Parnanto</option>
+			<option>PT Femalindo Karya Sejahtera</option>
+			<option>PT Jagad Frozen Foods</option>
+			<option>PT Nabio</option>
+			<option>PT Sendang Rejeki Binangkit</option>
+			<option>PT Sumber Natural Indonesia (Resto Golden Lamian)</option>
+			<option>PT Twelve Nippindo Paradiso (Resto Twelve Chinese Dining)</option>
+			<option>PT Malindo Food Delight</option>
+			<option>PT Sembilan Sejahtera</option>
+			<option>Rahman</option>
+			<option>Rio Ridwan Maulana</option>
+			<option>Santo</option>
+			<option>Sasmito</option>
+			<option>Siladin</option>
+			<option>Sudjadi</option>
+			<option>Sukarni</option>
+			<option>Supriyanto (Resto Dapoer Langganan)</option>
+			<option>Teguh Nurcipto</option>
+			<option>Tilakhur Rahman</option>
+			<option>Tjhin Men Kiat</option>
+			<option>Yatin</option>
+      `;
+    }
+      renderTable();
+    });
+  });
+
+  // Tombol Print - hanya baris dengan Box > 0 dan kolom tertentu
+  document.getElementById("btn-print").addEventListener("click", function () {
+  const trs = tbody.querySelectorAll("tr");
+
+  let totalBox = 0;
+  let totalEkor = 0;
+  let grandTotal = 0;
+
+  let printRowsHtml = "";
+  let rawText = "*FO Bebek*\n\n";
+
+  trs.forEach(function (tr) {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length === 0) return;
+
+    const size = tds[1].textContent.trim();
+
+    const input = tds[2].querySelector("input.box-input");
+    const box = parseFloat(input && input.value ? input.value : "0") || 0;
+
+    // ❗ wajib setelah box
+    if (box <= 0) return;
+
+    const ekorText = tds[3].textContent.trim();
+    const priceEkorText = tds[6].textContent.trim();
+    const totalPriceText = tds[7].textContent.trim();
+
+    // konversi angka
+    const ekorNum = parseInt(ekorText.replace(/\./g, "")) || 0;
+    const totalNum = parseInt(totalPriceText.replace(/[^0-9]/g, "")) || 0;
+
+    totalBox += box;
+    totalEkor += ekorNum;
+    grandTotal += totalNum;
+
+    // tabel print
+    printRowsHtml +=
+      '<tr>' +
+        '<td style="text-align:left;">' + size + '</td>' +
+        '<td style="text-align:right;">' + box + '</td>' +
+        '<td style="text-align:right;">' + ekorText + '</td>' +
+        '<td style="text-align:right;">' + priceEkorText + '</td>' +
+        '<td style="text-align:right;">' + totalPriceText + '</td>' +
+      '</tr>';
+
+    // ✅ TEXT WA (DI SINI YANG BENAR)
+    rawText += "• " + size + " → " + box + " karung (" + ekorText + " ekor) @" + priceEkorText;
+  });
+
+  // TOTAL
+  rawText += "\n *TOTAL : " + formatRupiah(grandTotal) + "*";
+
+  if (!printRowsHtml) {
+    alert("Tidak ada baris dengan Box > 0 untuk dicetak.");
+    return;
+  }
+
+  const printHtml =
+    '<html>' +
+    '<head>' +
+      '<title>Cetak Harga Bebek</title>' +
+      '<style>' +
+        'body { font-family: Arial; font-size: 12px; }' +
+        'table { width: 100%; border-collapse: collapse; }' +
+        'th, td { border: 1px solid #000; padding: 4px; text-align: right; }' +
+        'th:first-child, td:first-child { text-align: left; }' +
+      '</style>' +
+    '</head>' +
+    '<body>' +
+
+      '<h2>Hitung Harga Bebek</h2>' +
+
+      '<table>' +
+        '<tr>' +
+          '<th>Ukuran</th>' +
+          '<th>Karung</th>' +
+          '<th>Ekor</th>' +
+          '<th>Price/Ekor</th>' +
+          '<th>Total</th>' +
+        '</tr>' +
+        printRowsHtml +
+  '<tr>' +
+    '<td colspan="4" style="font-weight:bold;">TOTAL</td>' +
+    '<td style="font-weight:bold;">' + formatRupiah(grandTotal) + '</td>' +
+  '</tr>' +
+      '</table>' +
+    '</body>' +
+    '</html>';
+
+  const w = window.open('', '_blank');
+  w.document.open();
+  w.document.write(printHtml);
+  w.document.close();
+  w.print();
+});
+
+  // Tombol Reset - mengosongkan semua input
+  document.getElementById("btn-reset").addEventListener("click", function () {
+    const inputs = document.querySelectorAll("input.box-input");
+
+    inputs.forEach(input => {
+      input.value = "";
+    });
+	
+	document.getElementById("customer-select").value = "";
+
+    recalcTotals(); // perbarui total
+  });
+
+  // Render awal
+  renderTable();
+  
+  document.getElementById("btn-import").addEventListener("click", () => {
+  document.getElementById("import-excel").click();
+});
+
+document.getElementById("import-excel").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (evt) {
+    const data = new Uint8Array(evt.target.result);
+    const workbook = XLSX.read(data, { type: "array" });
+
+    // Ambil semua sheet
+    const newPriceTables = {};
+
+    workbook.SheetNames.forEach(sheetName => {
+      const sheet = workbook.Sheets[sheetName];
+      const json = XLSX.utils.sheet_to_json(sheet);
+
+      // Contoh nama sheet: "300 Karung"
+      const moq = sheetName.replace(/\D/g, "");
+
+      newPriceTables[moq] = json.map(row => ({
+        size: row["Size"],
+        priceKg: parseFloat(String(row["Price/Kg"]).replace(/[^0-9]/g, "")) || 0,
+        priceEkor: parseFloat(String(row["Price/Ekor"]).replace(/[^0-9]/g, "")) || 0
+      }));
+    });
+
+    // Replace data lama
+    Object.assign(priceTables, newPriceTables);
+
+    alert("✅ Harga berhasil di-import dari Excel!");
+    renderTable();
+  };
+
+  reader.readAsArrayBuffer(file);
+});
+
+document.getElementById("btn-download-html").addEventListener("click", () => {
+
+  // Ambil seluruh HTML
+  let html = document.documentElement.outerHTML;
+
+  // Replace isi priceTables lama dengan yang baru
+  const newData = JSON.stringify(priceTables, null, 2);
+
+  html = html.replace(
+    /const priceTables =[\s\S]*?};/,
+    `const priceTables = ${newData};`
+  );
+
+  // Buat file download
+  const blob = new Blob([html], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "harga_bebek_updated.html";
+  a.click();
+
+  URL.revokeObjectURL(url);
+});
+	
+	function copyWA() {
+  const textArea = document.getElementById("wa-text");
+  textArea.select();
+  document.execCommand("copy");
+  alert("✅ Berhasil di-copy!");
+}
+
+document.getElementById("btn-copy-wa").addEventListener("click", function () {
+  const customerName = document.getElementById("customer-select").value;
+  const trs = tbody.querySelectorAll("tr");
+
+  let rawText = "*FO Bebek*\n\n";
+  rawText += "Kirim " + getTanggalKirimText() + "\n\n";
+  let lastGrade = null;
+  let grandTotal = 0;
+
+  trs.forEach(function (tr) {
+    const tds = tr.querySelectorAll("td");
+    if (tds.length === 0) return;
+
+    const size = tds[1].textContent.trim();
+	
+	let currentGrade = size.includes("B") ? "B" : "A";
+	
+	const input = tds[2].querySelector("input.box-input");
+    const karung = parseFloat(input && input.value ? input.value : "0") || 0;
+
+    if (karung <= 0) return;
+
+	// kalau pindah dari A ke B → kasih enter
+	if (lastGrade !== currentGrade) {
+    if (lastGrade !== null) rawText += "\n"; // pemisah antar grade
+    rawText += "Grade " + currentGrade + "\n"; // header grade
+    }
+
+	lastGrade = currentGrade;
+
+    const ekorText = tds[3].textContent.trim();
+    const priceEkorText = tds[6].textContent.trim();
+    const totalPriceText = tds[7].textContent.trim();
+
+    const totalNum = parseInt(totalPriceText.replace(/[^0-9]/g, "")) || 0;
+    grandTotal += totalNum;
+
+    rawText += "• " + size + " → " + karung + " karung (" + ekorText + " ekor) @" + priceEkorText + "\n";
+  });
+
+  rawText += "\n *TOTAL : " + formatRupiah(grandTotal) + "*" + "\n\n";  
+  
+   if (customerName) {
+    rawText += "*" + customerName + "*";
+  }
+  
+  copyText(rawText);
+  
+  if (grandTotal === 0) {
+    alert("Isi dulu jumlah karung sebelum copy.");
+    return;
+  }
+
+  function copyText(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+
+  textarea.select();
+  textarea.setSelectionRange(0, 99999); // penting untuk HP
+
+  document.execCommand("copy");
+
+  document.body.removeChild(textarea);
+
+  alert("✅ Berhasil di-copy!");
+}
+
+});
+
+function getTanggalKirimText() {
+  const today = new Date();
+  const day = today.getDay();
+
+  let kirimDate = new Date(today);
+  let label = "besok";
+
+  if (day === 6) {
+    // Sabtu → Senin
+    kirimDate.setDate(today.getDate() + 2);
+    label = "Senin";
+  } else if (day === 0) {
+    // Minggu → Senin
+    kirimDate.setDate(today.getDate() + 1);
+    label = "Senin";
+  } else {
+    // Hari biasa → besok
+    kirimDate.setDate(today.getDate() + 1);
+  }
+
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const tanggal = kirimDate.toLocaleDateString('id-ID', options);
+
+  return label + " (" + tanggal + ")";
+}
+
+
+
+
+  </script>
+
+
+</body></html>
