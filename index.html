@@ -600,7 +600,7 @@
       <p class="note">
         Input hanya pada kolom <b>Karung</b>, kolom lain akan terhitung otomatis.<br>
         Pilih Tab <b>Harga</b> untuk menampilkan harga yang sesuai minimal order.<br><br>
-    <b style="color: red;">LAST PRICE UPDATE : 01 September 2026</b>
+    <b style="color: red;">LAST PRICE UPDATE : 18 Agustus 2026</b>
       </p>
 
       <div class="top-actions">
@@ -736,1330 +736,282 @@
   // DATA HARGA DARI EXCEL (semua size + Grade B)
   const priceTables = {
   "10": [
-    {
-      "size": "0.6-0.7",
-      "priceKg": 43000,
-      "priceEkor": 27950
-    },
-    {
-      "size": "0.7-0.8",
-      "priceKg": 44000,
-      "priceEkor": 33000
-    },
-    {
-      "size": "0.8-0.9",
-      "priceKg": 44000,
-      "priceEkor": 37400
-    },
-    {
-      "size": "0.9-1.0",
-      "priceKg": 44000,
-      "priceEkor": 41800
-    },
-    {
-      "size": "1.0-1.1",
-      "priceKg": 44000,
-      "priceEkor": 46200
-    },
-    {
-      "size": "1.1-1.2",
-      "priceKg": 43000,
-      "priceEkor": 49450
-    },
-    {
-      "size": "1.2-1.3",
-      "priceKg": 43000,
-      "priceEkor": 53750
-    },
-    {
-      "size": "1.3-1.4",
-      "priceKg": 43000,
-      "priceEkor": 58050
-    },
-    {
-      "size": "1.4-1.5",
-      "priceKg": 43000,
-      "priceEkor": 62350
-    },
-    {
-      "size": "1.5-1.6",
-      "priceKg": 42000,
-      "priceEkor": 65100
-    },
-    {
-      "size": "1.6-1.7",
-      "priceKg": 42000,
-      "priceEkor": 69300
-    },
-    {
-      "size": "1.7-1.8",
-      "priceKg": 43000,
-      "priceEkor": 75250
-    },
-    {
-      "size": "1.8-1.9",
-      "priceKg": 43000,
-      "priceEkor": 79550
-    },
-    {
-      "size": "1.9-2.0",
-      "priceKg": 43000,
-      "priceEkor": 83850
-    },
-    {
-      "size": "2.0-2.1",
-      "priceKg": 43000,
-      "priceEkor": 88150
-    },
-    {
-      "size": "2.1-2.2",
-      "priceKg": 43000,
-      "priceEkor": 92450
-    },
-    {
-      "size": "2.2-2.3",
-      "priceKg": 43000,
-      "priceEkor": 96750
-    },
-    {
-      "size": "2.3-2.4",
-      "priceKg": 43000,
-      "priceEkor": 101050
-    },
-    {
-      "size": "2.4-2.5",
-      "priceKg": 43000,
-      "priceEkor": 105350
-    },
-    {
-      "size": "2.5-2.6",
-      "priceKg": 43000,
-      "priceEkor": 109650
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 43000,
-      "priceEkor": 113950
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 43000,
-      "priceEkor": 118250
-    },
-    {
-      "size": "2.8-2.9",
-      "priceKg": 42800,
-      "priceEkor": 121980
-    },
-    {
-      "size": "2.9-3.0",
-      "priceKg": 42000,
-      "priceEkor": 123900
-    },
-    {
-      "size": ">= 3.0",
-      "priceKg": 40500,
-      "priceEkor": 129600
-    },
-    {
-      "size": "0.6-0.7 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 27300
-    },
-    {
-      "size": "0.7-0.8 Grade B",
-      "priceKg": 43000,
-      "priceEkor": 32250
-    },
-    {
-      "size": "0.8-0.9 Grade B",
-      "priceKg": 43000,
-      "priceEkor": 36550
-    },
-    {
-      "size": "0.9-1.0 Grade B",
-      "priceKg": 43000,
-      "priceEkor": 40850
-    },
-    {
-      "size": "1.0-1.1 Grade B",
-      "priceKg": 43000,
-      "priceEkor": 45150
-    },
-    {
-      "size": "1.1-1.2 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 48300
-    },
-    {
-      "size": "1.2-1.3 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 52500
-    },
-    {
-      "size": "1.3-1.4 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 56700
-    },
-    {
-      "size": "1.4-1.5 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 60900
-    },
-    {
-      "size": "1.5-1.6 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 63550
-    },
-    {
-      "size": "1.6-1.7 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 67650
-    },
-    {
-      "size": "1.7-1.8 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 73500
-    },
-    {
-      "size": "1.8-1.9 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 77700
-    },
-    {
-      "size": "1.9-2.0 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 81900
-    },
-    {
-      "size": "2.0-2.1 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 86100
-    },
-    {
-      "size": "2.1-2.2 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 90300
-    },
-    {
-      "size": "2.2-2.3 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 94500
-    },
-    {
-      "size": "2.3-2.4 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 98700
-    },
-    {
-      "size": "2.4-2.5 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 102900
-    },
-    {
-      "size": "2.5-2.6 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 107100
-    },
-    {
-      "size": "2.6-2.7 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 111300
-    },
-    {
-      "size": "2.7-2.8 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 115500
-    },
-    {
-      "size": "2.8-2.9 Grade B",
-      "priceKg": 41800,
-      "priceEkor": 119130
-    },
-    {
-      "size": "2.9-3.0 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 120950
-    },
-    {
-      "size": ">= 3.0 Grade B",
-      "priceKg": 39500,
-      "priceEkor": 126400
-    }
+    { "size": "0.6-0.7", "priceKg": 43000, "priceEkor": 27950 },
+    { "size": "0.7-0.8", "priceKg": 44000, "priceEkor": 33000 },
+    { "size": "0.8-0.9", "priceKg": 44000, "priceEkor": 37400 },
+    { "size": "0.9-1.0", "priceKg": 44000, "priceEkor": 41800 },
+    { "size": "1.0-1.1", "priceKg": 44000, "priceEkor": 46200 },
+    { "size": "1.1-1.2", "priceKg": 43000, "priceEkor": 49450 },
+    { "size": "1.2-1.3", "priceKg": 43000, "priceEkor": 53750 },
+    { "size": "1.3-1.4", "priceKg": 43000, "priceEkor": 58050 },
+    { "size": "1.4-1.5", "priceKg": 43000, "priceEkor": 62350 },
+    { "size": "1.5-1.6", "priceKg": 42000, "priceEkor": 65100 },
+    { "size": "1.6-1.7", "priceKg": 42000, "priceEkor": 69300 },
+    { "size": "1.7-1.8", "priceKg": 43000, "priceEkor": 75250 },
+    { "size": "1.8-1.9", "priceKg": 43000, "priceEkor": 79550 },
+    { "size": "1.9-2.0", "priceKg": 43000, "priceEkor": 83850 },
+    { "size": "2.0-2.1", "priceKg": 43000, "priceEkor": 88150 },
+    { "size": "2.1-2.2", "priceKg": 43000, "priceEkor": 92450 },
+    { "size": "2.2-2.3", "priceKg": 43000, "priceEkor": 96750 },
+    { "size": "2.3-2.4", "priceKg": 43000, "priceEkor": 101050 },
+    { "size": "2.4-2.5", "priceKg": 43000, "priceEkor": 105350 },
+    { "size": "2.5-2.6", "priceKg": 43000, "priceEkor": 109650 },
+    { "size": "2.6-2.7", "priceKg": 43000, "priceEkor": 113950 },
+    { "size": "2.7-2.8", "priceKg": 43000, "priceEkor": 118250 },
+    { "size": "2.8-2.9", "priceKg": 42800, "priceEkor": 121980 },
+    { "size": "2.9-3.0", "priceKg": 42000, "priceEkor": 123900 },
+    { "size": ">= 3.0", "priceKg": 40500, "priceEkor": 129600 },
+    { "size": "0.6-0.7 Grade B", "priceKg": 42000, "priceEkor": 27300 },
+    { "size": "0.7-0.8 Grade B", "priceKg": 43000, "priceEkor": 32250 },
+    { "size": "0.8-0.9 Grade B", "priceKg": 43000, "priceEkor": 36550 },
+    { "size": "0.9-1.0 Grade B", "priceKg": 43000, "priceEkor": 40850 },
+    { "size": "1.0-1.1 Grade B", "priceKg": 43000, "priceEkor": 45150 },
+    { "size": "1.1-1.2 Grade B", "priceKg": 42000, "priceEkor": 48300 },
+    { "size": "1.2-1.3 Grade B", "priceKg": 42000, "priceEkor": 52500 },
+    { "size": "1.3-1.4 Grade B", "priceKg": 42000, "priceEkor": 56700 },
+    { "size": "1.4-1.5 Grade B", "priceKg": 42000, "priceEkor": 60900 },
+    { "size": "1.5-1.6 Grade B", "priceKg": 41000, "priceEkor": 63550 },
+    { "size": "1.6-1.7 Grade B", "priceKg": 41000, "priceEkor": 67650 },
+    { "size": "1.7-1.8 Grade B", "priceKg": 42000, "priceEkor": 73500 },
+    { "size": "1.8-1.9 Grade B", "priceKg": 42000, "priceEkor": 77700 },
+    { "size": "1.9-2.0 Grade B", "priceKg": 42000, "priceEkor": 81900 },
+    { "size": "2.0-2.1 Grade B", "priceKg": 42000, "priceEkor": 86100 },
+    { "size": "2.1-2.2 Grade B", "priceKg": 42000, "priceEkor": 90300 },
+    { "size": "2.2-2.3 Grade B", "priceKg": 42000, "priceEkor": 94500 },
+    { "size": "2.3-2.4 Grade B", "priceKg": 42000, "priceEkor": 98700 },
+    { "size": "2.4-2.5 Grade B", "priceKg": 42000, "priceEkor": 102900 },
+    { "size": "2.5-2.6 Grade B", "priceKg": 42000, "priceEkor": 107100 },
+    { "size": "2.6-2.7 Grade B", "priceKg": 42000, "priceEkor": 111300 },
+    { "size": "2.7-2.8 Grade B", "priceKg": 42000, "priceEkor": 115500 },
+    { "size": "2.8-2.9 Grade B", "priceKg": 41800, "priceEkor": 119130 },
+    { "size": "2.9-3.0 Grade B", "priceKg": 41000, "priceEkor": 120950 },
+    { "size": ">= 3.0 Grade B", "priceKg": 39500, "priceEkor": 126400 }
   ],
   "50": [
-    {
-      "size": "0.6-0.7",
-      "priceKg": 42000,
-      "priceEkor": 27300
-    },
-    {
-      "size": "0.7-0.8",
-      "priceKg": 43000,
-      "priceEkor": 32250
-    },
-    {
-      "size": "0.8-0.9",
-      "priceKg": 43000,
-      "priceEkor": 36550
-    },
-    {
-      "size": "0.9-1.0",
-      "priceKg": 43000,
-      "priceEkor": 40850
-    },
-    {
-      "size": "1.0-1.1",
-      "priceKg": 43000,
-      "priceEkor": 45150
-    },
-    {
-      "size": "1.1-1.2",
-      "priceKg": 42000,
-      "priceEkor": 48300
-    },
-    {
-      "size": "1.2-1.3",
-      "priceKg": 42000,
-      "priceEkor": 52500
-    },
-    {
-      "size": "1.3-1.4",
-      "priceKg": 42000,
-      "priceEkor": 56700
-    },
-    {
-      "size": "1.4-1.5",
-      "priceKg": 42000,
-      "priceEkor": 60900
-    },
-    {
-      "size": "1.5-1.6",
-      "priceKg": 41000,
-      "priceEkor": 63550
-    },
-    {
-      "size": "1.6-1.7",
-      "priceKg": 41000,
-      "priceEkor": 67650
-    },
-    {
-      "size": "1.7-1.8",
-      "priceKg": 42000,
-      "priceEkor": 73500
-    },
-    {
-      "size": "1.8-1.9",
-      "priceKg": 42000,
-      "priceEkor": 77700
-    },
-    {
-      "size": "1.9-2.0",
-      "priceKg": 42000,
-      "priceEkor": 81900
-    },
-    {
-      "size": "2.0-2.1",
-      "priceKg": 42000,
-      "priceEkor": 86100
-    },
-    {
-      "size": "2.1-2.2",
-      "priceKg": 42000,
-      "priceEkor": 90300
-    },
-    {
-      "size": "2.2-2.3",
-      "priceKg": 42000,
-      "priceEkor": 94500
-    },
-    {
-      "size": "2.3-2.4",
-      "priceKg": 42000,
-      "priceEkor": 98700
-    },
-    {
-      "size": "2.4-2.5",
-      "priceKg": 42000,
-      "priceEkor": 102900
-    },
-    {
-      "size": "2.5-2.6",
-      "priceKg": 42000,
-      "priceEkor": 107100
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 42000,
-      "priceEkor": 111300
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 42000,
-      "priceEkor": 115500
-    },
-    {
-      "size": "2.8-2.9",
-      "priceKg": 41800,
-      "priceEkor": 119130
-    },
-    {
-      "size": "2.9-3.0",
-      "priceKg": 41000,
-      "priceEkor": 120950
-    },
-    {
-      "size": ">= 3.0",
-      "priceKg": 39500,
-      "priceEkor": 126400
-    },
-    {
-      "size": "0.6-0.7 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 26650
-    },
-    {
-      "size": "0.7-0.8 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 31500
-    },
-    {
-      "size": "0.8-0.9 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 35700
-    },
-    {
-      "size": "0.9-1.0 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 39900
-    },
-    {
-      "size": "1.0-1.1 Grade B",
-      "priceKg": 42000,
-      "priceEkor": 44100
-    },
-    {
-      "size": "1.1-1.2 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 47150
-    },
-    {
-      "size": "1.2-1.3 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 51250
-    },
-    {
-      "size": "1.3-1.4 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 55350
-    },
-    {
-      "size": "1.4-1.5 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 59450
-    },
-    {
-      "size": "1.5-1.6 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 62000
-    },
-    {
-      "size": "1.6-1.7 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 66000
-    },
-    {
-      "size": "1.7-1.8 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 71750
-    },
-    {
-      "size": "1.8-1.9 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 75850
-    },
-    {
-      "size": "1.9-2.0 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 79950
-    },
-    {
-      "size": "2.0-2.1 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 84050
-    },
-    {
-      "size": "2.1-2.2 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 88150
-    },
-    {
-      "size": "2.2-2.3 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 92250
-    },
-    {
-      "size": "2.3-2.4 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 96350
-    },
-    {
-      "size": "2.4-2.5 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 100450
-    },
-    {
-      "size": "2.5-2.6 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 104550
-    },
-    {
-      "size": "2.6-2.7 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 108650
-    },
-    {
-      "size": "2.7-2.8 Grade B",
-      "priceKg": 41000,
-      "priceEkor": 112750
-    },
-    {
-      "size": "2.8-2.9 Grade B",
-      "priceKg": 40800,
-      "priceEkor": 116280
-    },
-    {
-      "size": "2.9-3.0 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 118000
-    },
-    {
-      "size": ">= 3.0 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 123200
-    }
+    { "size": "0.6-0.7", "priceKg": 42000, "priceEkor": 27300 },
+    { "size": "0.7-0.8", "priceKg": 43000, "priceEkor": 32250 },
+    { "size": "0.8-0.9", "priceKg": 43000, "priceEkor": 36550 },
+    { "size": "0.9-1.0", "priceKg": 43000, "priceEkor": 40850 },
+    { "size": "1.0-1.1", "priceKg": 43000, "priceEkor": 45150 },
+    { "size": "1.1-1.2", "priceKg": 42000, "priceEkor": 48300 },
+    { "size": "1.2-1.3", "priceKg": 42000, "priceEkor": 52500 },
+    { "size": "1.3-1.4", "priceKg": 42000, "priceEkor": 56700 },
+    { "size": "1.4-1.5", "priceKg": 42000, "priceEkor": 60900 },
+    { "size": "1.5-1.6", "priceKg": 41000, "priceEkor": 63550 },
+    { "size": "1.6-1.7", "priceKg": 41000, "priceEkor": 67650 },
+    { "size": "1.7-1.8", "priceKg": 42000, "priceEkor": 73500 },
+    { "size": "1.8-1.9", "priceKg": 42000, "priceEkor": 77700 },
+    { "size": "1.9-2.0", "priceKg": 42000, "priceEkor": 81900 },
+    { "size": "2.0-2.1", "priceKg": 42000, "priceEkor": 86100 },
+    { "size": "2.1-2.2", "priceKg": 42000, "priceEkor": 90300 },
+    { "size": "2.2-2.3", "priceKg": 42000, "priceEkor": 94500 },
+    { "size": "2.3-2.4", "priceKg": 42000, "priceEkor": 98700 },
+    { "size": "2.4-2.5", "priceKg": 42000, "priceEkor": 102900 },
+    { "size": "2.5-2.6", "priceKg": 42000, "priceEkor": 107100 },
+    { "size": "2.6-2.7", "priceKg": 42000, "priceEkor": 111300 },
+    { "size": "2.7-2.8", "priceKg": 42000, "priceEkor": 115500 },
+    { "size": "2.8-2.9", "priceKg": 41800, "priceEkor": 119130 },
+    { "size": "2.9-3.0", "priceKg": 41000, "priceEkor": 120950 },
+    { "size": ">= 3.0", "priceKg": 39500, "priceEkor": 126400 },
+    { "size": "0.6-0.7 Grade B", "priceKg": 41000, "priceEkor": 26650 },
+    { "size": "0.7-0.8 Grade B", "priceKg": 42000, "priceEkor": 31500 },
+    { "size": "0.8-0.9 Grade B", "priceKg": 42000, "priceEkor": 35700 },
+    { "size": "0.9-1.0 Grade B", "priceKg": 42000, "priceEkor": 39900 },
+    { "size": "1.0-1.1 Grade B", "priceKg": 42000, "priceEkor": 44100 },
+    { "size": "1.1-1.2 Grade B", "priceKg": 41000, "priceEkor": 47150 },
+    { "size": "1.2-1.3 Grade B", "priceKg": 41000, "priceEkor": 51250 },
+    { "size": "1.3-1.4 Grade B", "priceKg": 41000, "priceEkor": 55350 },
+    { "size": "1.4-1.5 Grade B", "priceKg": 41000, "priceEkor": 59450 },
+    { "size": "1.5-1.6 Grade B", "priceKg": 40000, "priceEkor": 62000 },
+    { "size": "1.6-1.7 Grade B", "priceKg": 40000, "priceEkor": 66000 },
+    { "size": "1.7-1.8 Grade B", "priceKg": 41000, "priceEkor": 71750 },
+    { "size": "1.8-1.9 Grade B", "priceKg": 41000, "priceEkor": 75850 },
+    { "size": "1.9-2.0 Grade B", "priceKg": 41000, "priceEkor": 79950 },
+    { "size": "2.0-2.1 Grade B", "priceKg": 41000, "priceEkor": 84050 },
+    { "size": "2.1-2.2 Grade B", "priceKg": 41000, "priceEkor": 88150 },
+    { "size": "2.2-2.3 Grade B", "priceKg": 41000, "priceEkor": 92250 },
+    { "size": "2.3-2.4 Grade B", "priceKg": 41000, "priceEkor": 96350 },
+    { "size": "2.4-2.5 Grade B", "priceKg": 41000, "priceEkor": 100450 },
+    { "size": "2.5-2.6 Grade B", "priceKg": 41000, "priceEkor": 104550 },
+    { "size": "2.6-2.7 Grade B", "priceKg": 41000, "priceEkor": 108650 },
+    { "size": "2.7-2.8 Grade B", "priceKg": 41000, "priceEkor": 112750 },
+    { "size": "2.8-2.9 Grade B", "priceKg": 40800, "priceEkor": 116280 },
+    { "size": "2.9-3.0 Grade B", "priceKg": 40000, "priceEkor": 118000 },
+    { "size": ">= 3.0 Grade B", "priceKg": 38500, "priceEkor": 123200 }
   ],
   "100": [
-    {
-      "size": "0.6-0.7",
-      "priceKg": 40000,
-      "priceEkor": 26000
-    },
-    {
-      "size": "0.7-0.8",
-      "priceKg": 41000,
-      "priceEkor": 30750
-    },
-    {
-      "size": "0.8-0.9",
-      "priceKg": 41000,
-      "priceEkor": 34850
-    },
-    {
-      "size": "0.9-1.0",
-      "priceKg": 41000,
-      "priceEkor": 38950
-    },
-    {
-      "size": "1.0-1.1",
-      "priceKg": 41000,
-      "priceEkor": 43050
-    },
-    {
-      "size": "1.1-1.2",
-      "priceKg": 40000,
-      "priceEkor": 46000
-    },
-    {
-      "size": "1.2-1.3",
-      "priceKg": 40000,
-      "priceEkor": 50000
-    },
-    {
-      "size": "1.3-1.4",
-      "priceKg": 40000,
-      "priceEkor": 54000
-    },
-    {
-      "size": "1.4-1.5",
-      "priceKg": 40000,
-      "priceEkor": 58000
-    },
-    {
-      "size": "1.5-1.6",
-      "priceKg": 39000,
-      "priceEkor": 60450
-    },
-    {
-      "size": "1.6-1.7",
-      "priceKg": 39000,
-      "priceEkor": 64350
-    },
-    {
-      "size": "1.7-1.8",
-      "priceKg": 40000,
-      "priceEkor": 70000
-    },
-    {
-      "size": "1.8-1.9",
-      "priceKg": 40000,
-      "priceEkor": 74000
-    },
-    {
-      "size": "1.9-2.0",
-      "priceKg": 40000,
-      "priceEkor": 78000
-    },
-    {
-      "size": "2.0-2.1",
-      "priceKg": 40000,
-      "priceEkor": 82000
-    },
-    {
-      "size": "2.1-2.2",
-      "priceKg": 40000,
-      "priceEkor": 86000
-    },
-    {
-      "size": "2.2-2.3",
-      "priceKg": 40000,
-      "priceEkor": 90000
-    },
-    {
-      "size": "2.3-2.4",
-      "priceKg": 40000,
-      "priceEkor": 94000
-    },
-    {
-      "size": "2.4-2.5",
-      "priceKg": 40000,
-      "priceEkor": 98000
-    },
-    {
-      "size": "2.5-2.6",
-      "priceKg": 40000,
-      "priceEkor": 102000
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 40000,
-      "priceEkor": 106000
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 40000,
-      "priceEkor": 110000
-    },
-    {
-      "size": "2.8-2.9",
-      "priceKg": 39800,
-      "priceEkor": 113430
-    },
-    {
-      "size": "2.9-3.0",
-      "priceKg": 39000,
-      "priceEkor": 115050
-    },
-    {
-      "size": ">= 3.0",
-      "priceKg": 37500,
-      "priceEkor": 120000
-    },
-    {
-      "size": "0.6-0.7 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 25350
-    },
-    {
-      "size": "0.7-0.8 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 30000
-    },
-    {
-      "size": "0.8-0.9 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 34000
-    },
-    {
-      "size": "0.9-1.0 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 38000
-    },
-    {
-      "size": "1.0-1.1 Grade B",
-      "priceKg": 40000,
-      "priceEkor": 42000
-    },
-    {
-      "size": "1.1-1.2 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 44850
-    },
-    {
-      "size": "1.2-1.3 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 48750
-    },
-    {
-      "size": "1.3-1.4 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 52650
-    },
-    {
-      "size": "1.4-1.5 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 56550
-    },
-    {
-      "size": "1.5-1.6 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 58900
-    },
-    {
-      "size": "1.6-1.7 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 62700
-    },
-    {
-      "size": "1.7-1.8 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 68250
-    },
-    {
-      "size": "1.8-1.9 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 72150
-    },
-    {
-      "size": "1.9-2.0 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 76050
-    },
-    {
-      "size": "2.0-2.1 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 79950
-    },
-    {
-      "size": "2.1-2.2 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 83850
-    },
-    {
-      "size": "2.2-2.3 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 87750
-    },
-    {
-      "size": "2.3-2.4 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 91650
-    },
-    {
-      "size": "2.4-2.5 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 95550
-    },
-    {
-      "size": "2.5-2.6 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 99450
-    },
-    {
-      "size": "2.6-2.7 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 103350
-    },
-    {
-      "size": "2.7-2.8 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 107250
-    },
-    {
-      "size": "2.8-2.9 Grade B",
-      "priceKg": 38800,
-      "priceEkor": 110580
-    },
-    {
-      "size": "2.9-3.0 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 112100
-    },
-    {
-      "size": ">= 3.0 Grade B",
-      "priceKg": 36500,
-      "priceEkor": 116800
-    }
+    { "size": "0.6-0.7", "priceKg": 40000, "priceEkor": 26000 },
+    { "size": "0.7-0.8", "priceKg": 41000, "priceEkor": 30750 },
+    { "size": "0.8-0.9", "priceKg": 41000, "priceEkor": 34850 },
+    { "size": "0.9-1.0", "priceKg": 41000, "priceEkor": 38950 },
+    { "size": "1.0-1.1", "priceKg": 41000, "priceEkor": 43050 },
+    { "size": "1.1-1.2", "priceKg": 40000, "priceEkor": 46000 },
+    { "size": "1.2-1.3", "priceKg": 40000, "priceEkor": 50000 },
+    { "size": "1.3-1.4", "priceKg": 40000, "priceEkor": 54000 },
+    { "size": "1.4-1.5", "priceKg": 40000, "priceEkor": 58000 },
+    { "size": "1.5-1.6", "priceKg": 39000, "priceEkor": 60450 },
+    { "size": "1.6-1.7", "priceKg": 39000, "priceEkor": 64350 },
+    { "size": "1.7-1.8", "priceKg": 40000, "priceEkor": 70000 },
+    { "size": "1.8-1.9", "priceKg": 40000, "priceEkor": 74000 },
+    { "size": "1.9-2.0", "priceKg": 40000, "priceEkor": 78000 },
+    { "size": "2.0-2.1", "priceKg": 40000, "priceEkor": 82000 },
+    { "size": "2.1-2.2", "priceKg": 40000, "priceEkor": 86000 },
+    { "size": "2.2-2.3", "priceKg": 40000, "priceEkor": 90000 },
+    { "size": "2.3-2.4", "priceKg": 40000, "priceEkor": 94000 },
+    { "size": "2.4-2.5", "priceKg": 40000, "priceEkor": 98000 },
+    { "size": "2.5-2.6", "priceKg": 40000, "priceEkor": 102000 },
+    { "size": "2.6-2.7", "priceKg": 40000, "priceEkor": 106000 },
+    { "size": "2.7-2.8", "priceKg": 40000, "priceEkor": 110000 },
+    { "size": "2.8-2.9", "priceKg": 39800, "priceEkor": 113430 },
+    { "size": "2.9-3.0", "priceKg": 39000, "priceEkor": 115050 },
+    { "size": ">= 3.0", "priceKg": 37500, "priceEkor": 120000 },
+    { "size": "0.6-0.7 Grade B", "priceKg": 39000, "priceEkor": 25350 },
+    { "size": "0.7-0.8 Grade B", "priceKg": 40000, "priceEkor": 30000 },
+    { "size": "0.8-0.9 Grade B", "priceKg": 40000, "priceEkor": 34000 },
+    { "size": "0.9-1.0 Grade B", "priceKg": 40000, "priceEkor": 38000 },
+    { "size": "1.0-1.1 Grade B", "priceKg": 40000, "priceEkor": 42000 },
+    { "size": "1.1-1.2 Grade B", "priceKg": 39000, "priceEkor": 44850 },
+    { "size": "1.2-1.3 Grade B", "priceKg": 39000, "priceEkor": 48750 },
+    { "size": "1.3-1.4 Grade B", "priceKg": 39000, "priceEkor": 52650 },
+    { "size": "1.4-1.5 Grade B", "priceKg": 39000, "priceEkor": 56550 },
+    { "size": "1.5-1.6 Grade B", "priceKg": 38000, "priceEkor": 58900 },
+    { "size": "1.6-1.7 Grade B", "priceKg": 38000, "priceEkor": 62700 },
+    { "size": "1.7-1.8 Grade B", "priceKg": 39000, "priceEkor": 68250 },
+    { "size": "1.8-1.9 Grade B", "priceKg": 39000, "priceEkor": 72150 },
+    { "size": "1.9-2.0 Grade B", "priceKg": 39000, "priceEkor": 76050 },
+    { "size": "2.0-2.1 Grade B", "priceKg": 39000, "priceEkor": 79950 },
+    { "size": "2.1-2.2 Grade B", "priceKg": 39000, "priceEkor": 83850 },
+    { "size": "2.2-2.3 Grade B", "priceKg": 39000, "priceEkor": 87750 },
+    { "size": "2.3-2.4 Grade B", "priceKg": 39000, "priceEkor": 91650 },
+    { "size": "2.4-2.5 Grade B", "priceKg": 39000, "priceEkor": 95550 },
+    { "size": "2.5-2.6 Grade B", "priceKg": 39000, "priceEkor": 99450 },
+    { "size": "2.6-2.7 Grade B", "priceKg": 39000, "priceEkor": 103350 },
+    { "size": "2.7-2.8 Grade B", "priceKg": 39000, "priceEkor": 107250 },
+    { "size": "2.8-2.9 Grade B", "priceKg": 38800, "priceEkor": 110580 },
+    { "size": "2.9-3.0 Grade B", "priceKg": 38000, "priceEkor": 112100 },
+    { "size": ">= 3.0 Grade B", "priceKg": 36500, "priceEkor": 116800 }
   ],
   "200": [
-    {
-      "size": "0.6-0.7",
-      "priceKg": 39500,
-      "priceEkor": 25675
-    },
-    {
-      "size": "0.7-0.8",
-      "priceKg": 40500,
-      "priceEkor": 30375
-    },
-    {
-      "size": "0.8-0.9",
-      "priceKg": 40500,
-      "priceEkor": 34425
-    },
-    {
-      "size": "0.9-1.0",
-      "priceKg": 40500,
-      "priceEkor": 38475
-    },
-    {
-      "size": "1.0-1.1",
-      "priceKg": 40500,
-      "priceEkor": 42525
-    },
-    {
-      "size": "1.1-1.2",
-      "priceKg": 39500,
-      "priceEkor": 45425
-    },
-    {
-      "size": "1.2-1.3",
-      "priceKg": 39500,
-      "priceEkor": 49375
-    },
-    {
-      "size": "1.3-1.4",
-      "priceKg": 39500,
-      "priceEkor": 53325
-    },
-    {
-      "size": "1.4-1.5",
-      "priceKg": 39500,
-      "priceEkor": 57275
-    },
-    {
-      "size": "1.5-1.6",
-      "priceKg": 38000,
-      "priceEkor": 58900
-    },
-    {
-      "size": "1.6-1.7",
-      "priceKg": 38000,
-      "priceEkor": 62700
-    },
-    {
-      "size": "1.7-1.8",
-      "priceKg": 39000,
-      "priceEkor": 68250
-    },
-    {
-      "size": "1.8-1.9",
-      "priceKg": 39000,
-      "priceEkor": 72150
-    },
-    {
-      "size": "1.9-2.0",
-      "priceKg": 39000,
-      "priceEkor": 76050
-    },
-    {
-      "size": "2.0-2.1",
-      "priceKg": 38500,
-      "priceEkor": 78925
-    },
-    {
-      "size": "2.1-2.2",
-      "priceKg": 38500,
-      "priceEkor": 82775
-    },
-    {
-      "size": "2.2-2.3",
-      "priceKg": 38500,
-      "priceEkor": 86625
-    },
-    {
-      "size": "2.3-2.4",
-      "priceKg": 38500,
-      "priceEkor": 90475
-    },
-    {
-      "size": "2.4-2.5",
-      "priceKg": 39000,
-      "priceEkor": 95550
-    },
-    {
-      "size": "2.5-2.6",
-      "priceKg": 39000,
-      "priceEkor": 99450
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 39000,
-      "priceEkor": 103350
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 39000,
-      "priceEkor": 107250
-    },
-    {
-      "size": "2.8-2.9",
-      "priceKg": 38800,
-      "priceEkor": 110580
-    },
-    {
-      "size": "2.9-3.0",
-      "priceKg": 38000,
-      "priceEkor": 112100
-    },
-    {
-      "size": ">= 3.0",
-      "priceKg": 37500,
-      "priceEkor": 120000
-    },
-    {
-      "size": "0.6-0.7 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 25025
-    },
-    {
-      "size": "0.7-0.8 Grade B",
-      "priceKg": 39500,
-      "priceEkor": 29625
-    },
-    {
-      "size": "0.8-0.9 Grade B",
-      "priceKg": 39500,
-      "priceEkor": 33575
-    },
-    {
-      "size": "0.9-1.0 Grade B",
-      "priceKg": 39500,
-      "priceEkor": 37525
-    },
-    {
-      "size": "1.0-1.1 Grade B",
-      "priceKg": 39500,
-      "priceEkor": 41475
-    },
-    {
-      "size": "1.1-1.2 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 44275
-    },
-    {
-      "size": "1.2-1.3 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 48125
-    },
-    {
-      "size": "1.3-1.4 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 51975
-    },
-    {
-      "size": "1.4-1.5 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 55825
-    },
-    {
-      "size": "1.5-1.6 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 57350
-    },
-    {
-      "size": "1.6-1.7 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 61050
-    },
-    {
-      "size": "1.7-1.8 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 66500
-    },
-    {
-      "size": "1.8-1.9 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 70300
-    },
-    {
-      "size": "1.9-2.0 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 74100
-    },
-    {
-      "size": "2.0-2.1 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 76875
-    },
-    {
-      "size": "2.1-2.2 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 80625
-    },
-    {
-      "size": "2.2-2.3 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 84375
-    },
-    {
-      "size": "2.3-2.4 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 88125
-    },
-    {
-      "size": "2.4-2.5 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 93100
-    },
-    {
-      "size": "2.5-2.6 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 96900
-    },
-    {
-      "size": "2.6-2.7 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 100700
-    },
-    {
-      "size": "2.7-2.8 Grade B",
-      "priceKg": 38000,
-      "priceEkor": 104500
-    },
-    {
-      "size": "2.8-2.9 Grade B",
-      "priceKg": 37800,
-      "priceEkor": 107730
-    },
-    {
-      "size": "2.9-3.0 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 109150
-    },
-    {
-      "size": ">= 3.0 Grade B",
-      "priceKg": 36500,
-      "priceEkor": 116800
-    }
+    { "size": "0.6-0.7", "priceKg": 39500, "priceEkor": 25675 },
+    { "size": "0.7-0.8", "priceKg": 40500, "priceEkor": 30375 },
+    { "size": "0.8-0.9", "priceKg": 40500, "priceEkor": 34425 },
+    { "size": "0.9-1.0", "priceKg": 40500, "priceEkor": 38475 },
+    { "size": "1.0-1.1", "priceKg": 40500, "priceEkor": 42525 },
+    { "size": "1.1-1.2", "priceKg": 39500, "priceEkor": 45425 },
+    { "size": "1.2-1.3", "priceKg": 39500, "priceEkor": 49375 },
+    { "size": "1.3-1.4", "priceKg": 39500, "priceEkor": 53325 },
+    { "size": "1.4-1.5", "priceKg": 39500, "priceEkor": 57275 },
+    { "size": "1.5-1.6", "priceKg": 38000, "priceEkor": 58900 },
+    { "size": "1.6-1.7", "priceKg": 38000, "priceEkor": 62700 },
+    { "size": "1.7-1.8", "priceKg": 39000, "priceEkor": 68250 },
+    { "size": "1.8-1.9", "priceKg": 39000, "priceEkor": 72150 },
+    { "size": "1.9-2.0", "priceKg": 39000, "priceEkor": 76050 },
+    { "size": "2.0-2.1", "priceKg": 38500, "priceEkor": 78925 },
+    { "size": "2.1-2.2", "priceKg": 38500, "priceEkor": 82775 },
+    { "size": "2.2-2.3", "priceKg": 38500, "priceEkor": 86625 },
+    { "size": "2.3-2.4", "priceKg": 38500, "priceEkor": 90475 },
+    { "size": "2.4-2.5", "priceKg": 39000, "priceEkor": 95550 },
+    { "size": "2.5-2.6", "priceKg": 39000, "priceEkor": 99450 },
+    { "size": "2.6-2.7", "priceKg": 39000, "priceEkor": 103350 },
+    { "size": "2.7-2.8", "priceKg": 39000, "priceEkor": 107250 },
+    { "size": "2.8-2.9", "priceKg": 38800, "priceEkor": 110580 },
+    { "size": "2.9-3.0", "priceKg": 38000, "priceEkor": 112100 },
+    { "size": ">= 3.0", "priceKg": 37500, "priceEkor": 120000 },
+    { "size": "0.6-0.7 Grade B", "priceKg": 38500, "priceEkor": 25025 },
+    { "size": "0.7-0.8 Grade B", "priceKg": 39500, "priceEkor": 29625 },
+    { "size": "0.8-0.9 Grade B", "priceKg": 39500, "priceEkor": 33575 },
+    { "size": "0.9-1.0 Grade B", "priceKg": 39500, "priceEkor": 37525 },
+    { "size": "1.0-1.1 Grade B", "priceKg": 39500, "priceEkor": 41475 },
+    { "size": "1.1-1.2 Grade B", "priceKg": 38500, "priceEkor": 44275 },
+    { "size": "1.2-1.3 Grade B", "priceKg": 38500, "priceEkor": 48125 },
+    { "size": "1.3-1.4 Grade B", "priceKg": 38500, "priceEkor": 51975 },
+    { "size": "1.4-1.5 Grade B", "priceKg": 38500, "priceEkor": 55825 },
+    { "size": "1.5-1.6 Grade B", "priceKg": 37000, "priceEkor": 57350 },
+    { "size": "1.6-1.7 Grade B", "priceKg": 37000, "priceEkor": 61050 },
+    { "size": "1.7-1.8 Grade B", "priceKg": 38000, "priceEkor": 66500 },
+    { "size": "1.8-1.9 Grade B", "priceKg": 38000, "priceEkor": 70300 },
+    { "size": "1.9-2.0 Grade B", "priceKg": 38000, "priceEkor": 74100 },
+    { "size": "2.0-2.1 Grade B", "priceKg": 37500, "priceEkor": 76875 },
+    { "size": "2.1-2.2 Grade B", "priceKg": 37500, "priceEkor": 80625 },
+    { "size": "2.2-2.3 Grade B", "priceKg": 37500, "priceEkor": 84375 },
+    { "size": "2.3-2.4 Grade B", "priceKg": 37500, "priceEkor": 88125 },
+    { "size": "2.4-2.5 Grade B", "priceKg": 38000, "priceEkor": 93100 },
+    { "size": "2.5-2.6 Grade B", "priceKg": 38000, "priceEkor": 96900 },
+    { "size": "2.6-2.7 Grade B", "priceKg": 38000, "priceEkor": 100700 },
+    { "size": "2.7-2.8 Grade B", "priceKg": 38000, "priceEkor": 104500 },
+    { "size": "2.8-2.9 Grade B", "priceKg": 37800, "priceEkor": 107730 },
+    { "size": "2.9-3.0 Grade B", "priceKg": 37000, "priceEkor": 109150 },
+    { "size": ">= 3.0 Grade B", "priceKg": 36500, "priceEkor": 116800 }
   ],
   "300": [
-    {
-      "size": "0.6-0.7",
-      "priceKg": 38500,
-      "priceEkor": 25025
-    },
-    {
-      "size": "0.7-0.8",
-      "priceKg": 40000,
-      "priceEkor": 30000
-    },
-    {
-      "size": "0.8-0.9",
-      "priceKg": 40000,
-      "priceEkor": 34000
-    },
-    {
-      "size": "0.9-1.0",
-      "priceKg": 39500,
-      "priceEkor": 37525
-    },
-    {
-      "size": "1.0-1.1",
-      "priceKg": 40000,
-      "priceEkor": 42000
-    },
-    {
-      "size": "1.1-1.2",
-      "priceKg": 38500,
-      "priceEkor": 44275
-    },
-    {
-      "size": "1.2-1.3",
-      "priceKg": 38500,
-      "priceEkor": 48125
-    },
-    {
-      "size": "1.3-1.4",
-      "priceKg": 38500,
-      "priceEkor": 51975
-    },
-    {
-      "size": "1.4-1.5",
-      "priceKg": 38500,
-      "priceEkor": 55825
-    },
-    {
-      "size": "1.5-1.6",
-      "priceKg": 37000,
-      "priceEkor": 57350
-    },
-    {
-      "size": "1.6-1.7",
-      "priceKg": 37000,
-      "priceEkor": 61050
-    },
-    {
-      "size": "1.7-1.8",
-      "priceKg": 38000,
-      "priceEkor": 66500
-    },
-    {
-      "size": "1.8-1.9",
-      "priceKg": 38000,
-      "priceEkor": 70300
-    },
-    {
-      "size": "1.9-2.0",
-      "priceKg": 38000,
-      "priceEkor": 74100
-    },
-    {
-      "size": "2.0-2.1",
-      "priceKg": 37500,
-      "priceEkor": 76875
-    },
-    {
-      "size": "2.1-2.2",
-      "priceKg": 37500,
-      "priceEkor": 80625
-    },
-    {
-      "size": "2.2-2.3",
-      "priceKg": 37500,
-      "priceEkor": 84375
-    },
-    {
-      "size": "2.3-2.4",
-      "priceKg": 37500,
-      "priceEkor": 88125
-    },
-    {
-      "size": "2.4-2.5",
-      "priceKg": 38000,
-      "priceEkor": 93100
-    },
-    {
-      "size": "2.5-2.6",
-      "priceKg": 38000,
-      "priceEkor": 96900
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 38000,
-      "priceEkor": 100700
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 38000,
-      "priceEkor": 104500
-    },
-    {
-      "size": "2.8-2.9",
-      "priceKg": 37800,
-      "priceEkor": 107730
-    },
-    {
-      "size": "2.9-3.0",
-      "priceKg": 37000,
-      "priceEkor": 109150
-    },
-    {
-      "size": ">= 3.0",
-      "priceKg": 36500,
-      "priceEkor": 116800
-    },
-    {
-      "size": "0.6-0.7 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 24375
-    },
-    {
-      "size": "0.7-0.8 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 29250
-    },
-    {
-      "size": "0.8-0.9 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 33150
-    },
-    {
-      "size": "0.9-1.0 Grade B",
-      "priceKg": 38500,
-      "priceEkor": 36575
-    },
-    {
-      "size": "1.0-1.1 Grade B",
-      "priceKg": 39000,
-      "priceEkor": 40950
-    },
-    {
-      "size": "1.1-1.2 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 43125
-    },
-    {
-      "size": "1.2-1.3 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 46875
-    },
-    {
-      "size": "1.3-1.4 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 50625
-    },
-    {
-      "size": "1.4-1.5 Grade B",
-      "priceKg": 37500,
-      "priceEkor": 54375
-    },
-    {
-      "size": "1.5-1.6 Grade B",
-      "priceKg": 36000,
-      "priceEkor": 55800
-    },
-    {
-      "size": "1.6-1.7 Grade B",
-      "priceKg": 36000,
-      "priceEkor": 59400
-    },
-    {
-      "size": "1.7-1.8 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 64750
-    },
-    {
-      "size": "1.8-1.9 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 68450
-    },
-    {
-      "size": "1.9-2.0 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 72150
-    },
-    {
-      "size": "2.0-2.1 Grade B",
-      "priceKg": 36500,
-      "priceEkor": 74825
-    },
-    {
-      "size": "2.1-2.2 Grade B",
-      "priceKg": 36500,
-      "priceEkor": 78475
-    },
-    {
-      "size": "2.2-2.3 Grade B",
-      "priceKg": 36500,
-      "priceEkor": 82125
-    },
-    {
-      "size": "2.3-2.4 Grade B",
-      "priceKg": 36500,
-      "priceEkor": 85775
-    },
-    {
-      "size": "2.4-2.5 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 90650
-    },
-    {
-      "size": "2.5-2.6 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 94350
-    },
-    {
-      "size": "2.6-2.7 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 98050
-    },
-    {
-      "size": "2.7-2.8 Grade B",
-      "priceKg": 37000,
-      "priceEkor": 101750
-    },
-    {
-      "size": "2.8-2.9 Grade B",
-      "priceKg": 36800,
-      "priceEkor": 104880
-    },
-    {
-      "size": "2.9-3.0 Grade B",
-      "priceKg": 36000,
-      "priceEkor": 106200
-    },
-    {
-      "size": ">= 3.0 Grade B",
-      "priceKg": 35500,
-      "priceEkor": 113600
-    }
+    { "size": "0.6-0.7", "priceKg": 38500, "priceEkor": 25025 },
+    { "size": "0.7-0.8", "priceKg": 40000, "priceEkor": 30000 },
+    { "size": "0.8-0.9", "priceKg": 40000, "priceEkor": 34000 },
+    { "size": "0.9-1.0", "priceKg": 39500, "priceEkor": 37525 },
+    { "size": "1.0-1.1", "priceKg": 40000, "priceEkor": 42000 },
+    { "size": "1.1-1.2", "priceKg": 38500, "priceEkor": 44275 },
+    { "size": "1.2-1.3", "priceKg": 38500, "priceEkor": 48125 },
+    { "size": "1.3-1.4", "priceKg": 38500, "priceEkor": 51975 },
+    { "size": "1.4-1.5", "priceKg": 38500, "priceEkor": 55825 },
+    { "size": "1.5-1.6", "priceKg": 37000, "priceEkor": 57350 },
+    { "size": "1.6-1.7", "priceKg": 37000, "priceEkor": 61050 },
+    { "size": "1.7-1.8", "priceKg": 38000, "priceEkor": 66500 },
+    { "size": "1.8-1.9", "priceKg": 38000, "priceEkor": 70300 },
+    { "size": "1.9-2.0", "priceKg": 38000, "priceEkor": 74100 },
+    { "size": "2.0-2.1", "priceKg": 37500, "priceEkor": 76875 },
+    { "size": "2.1-2.2", "priceKg": 37500, "priceEkor": 80625 },
+    { "size": "2.2-2.3", "priceKg": 37500, "priceEkor": 84375 },
+    { "size": "2.3-2.4", "priceKg": 37500, "priceEkor": 88125 },
+    { "size": "2.4-2.5", "priceKg": 38000, "priceEkor": 93100 },
+    { "size": "2.5-2.6", "priceKg": 38000, "priceEkor": 96900 },
+    { "size": "2.6-2.7", "priceKg": 38000, "priceEkor": 100700 },
+    { "size": "2.7-2.8", "priceKg": 38000, "priceEkor": 104500 },
+    { "size": "2.8-2.9", "priceKg": 37800, "priceEkor": 107730 },
+    { "size": "2.9-3.0", "priceKg": 37000, "priceEkor": 109150 },
+    { "size": ">= 3.0", "priceKg": 36500, "priceEkor": 116800 },
+    { "size": "0.6-0.7 Grade B", "priceKg": 37500, "priceEkor": 24375 },
+    { "size": "0.7-0.8 Grade B", "priceKg": 39000, "priceEkor": 29250 },
+    { "size": "0.8-0.9 Grade B", "priceKg": 39000, "priceEkor": 33150 },
+    { "size": "0.9-1.0 Grade B", "priceKg": 38500, "priceEkor": 36575 },
+    { "size": "1.0-1.1 Grade B", "priceKg": 39000, "priceEkor": 40950 },
+    { "size": "1.1-1.2 Grade B", "priceKg": 37500, "priceEkor": 43125 },
+    { "size": "1.2-1.3 Grade B", "priceKg": 37500, "priceEkor": 46875 },
+    { "size": "1.3-1.4 Grade B", "priceKg": 37500, "priceEkor": 50625 },
+    { "size": "1.4-1.5 Grade B", "priceKg": 37500, "priceEkor": 54375 },
+    { "size": "1.5-1.6 Grade B", "priceKg": 36000, "priceEkor": 55800 },
+    { "size": "1.6-1.7 Grade B", "priceKg": 36000, "priceEkor": 59400 },
+    { "size": "1.7-1.8 Grade B", "priceKg": 37000, "priceEkor": 64750 },
+    { "size": "1.8-1.9 Grade B", "priceKg": 37000, "priceEkor": 68450 },
+    { "size": "1.9-2.0 Grade B", "priceKg": 37000, "priceEkor": 72150 },
+    { "size": "2.0-2.1 Grade B", "priceKg": 36500, "priceEkor": 74825 },
+    { "size": "2.1-2.2 Grade B", "priceKg": 36500, "priceEkor": 78475 },
+    { "size": "2.2-2.3 Grade B", "priceKg": 36500, "priceEkor": 82125 },
+    { "size": "2.3-2.4 Grade B", "priceKg": 36500, "priceEkor": 85775 },
+    { "size": "2.4-2.5 Grade B", "priceKg": 37000, "priceEkor": 90650 },
+    { "size": "2.5-2.6 Grade B", "priceKg": 37000, "priceEkor": 94350 },
+    { "size": "2.6-2.7 Grade B", "priceKg": 37000, "priceEkor": 98050 },
+    { "size": "2.7-2.8 Grade B", "priceKg": 37000, "priceEkor": 101750 },
+    { "size": "2.8-2.9 Grade B", "priceKg": 36800, "priceEkor": 104880 },
+    { "size": "2.9-3.0 Grade B", "priceKg": 36000, "priceEkor": 106200 },
+    { "size": ">= 3.0 Grade B", "priceKg": 35500, "priceEkor": 113600 }
   ],
   "hotel": [
-    {
-      "size": "2.2-2.3",
-      "priceKg": 0,
-      "priceEkor": 99000
-    },
-    {
-      "size": "2.3-2.4",
-      "priceKg": 0,
-      "priceEkor": 99000
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 0,
-      "priceEkor": 114000
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 0,
-      "priceEkor": 114000
-    }
+    { "size": "2.2-2.3", "priceKg": 0, "priceEkor": 99000 },
+    { "size": "2.3-2.4", "priceKg": 0, "priceEkor": 99000 },
+    { "size": "2.6-2.7", "priceKg": 0, "priceEkor": 114000 },
+    { "size": "2.7-2.8", "priceKg": 0, "priceEkor": 114000 }
   ],
   "winglok": [
-    {
-      "size": "2.5-2.6",
-      "priceKg": 0,
-      "priceEkor": 107100
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 0,
-      "priceEkor": 111300
-    },
-    {
-      "size": "2.7-2.8",
-      "priceKg": 0,
-      "priceEkor": 115500
-    },
-    {
-      "size": "2.8-2.9",
-      "priceKg": 0,
-      "priceEkor": 119130
-    }
+    { "size": "2.5-2.6", "priceKg": 0, "priceEkor": 107100 },
+    { "size": "2.6-2.7", "priceKg": 0, "priceEkor": 111300 },
+    { "size": "2.7-2.8", "priceKg": 0, "priceEkor": 115500 },
+    { "size": "2.8-2.9", "priceKg": 0, "priceEkor": 119130 }
   ],
   "cfc": [
-    {
-      "size": "2.3-2.4",
-      "priceKg": 0,
-      "priceEkor": 103000
-    },
-    {
-      "size": "2.4-2.5",
-      "priceKg": 0,
-      "priceEkor": 107000
-    },
-    {
-      "size": "2.5-2.6",
-      "priceKg": 0,
-      "priceEkor": 111000
-    },
-    {
-      "size": "2.6-2.7",
-      "priceKg": 0,
-      "priceEkor": 116000
-    }
+    { "size": "2.3-2.4", "priceKg": 0, "priceEkor": 103000 },
+    { "size": "2.4-2.5", "priceKg": 0, "priceEkor": 107000 },
+    { "size": "2.5-2.6", "priceKg": 0, "priceEkor": 111000 },
+    { "size": "2.6-2.7", "priceKg": 0, "priceEkor": 116000 }
   ],
   "psafkir": [
     { "size": "0.6-0.7", "priceKg": 34000, "priceEkor": 22100 },
