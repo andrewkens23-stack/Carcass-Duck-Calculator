@@ -40,16 +40,16 @@
       max-width: 1280px;
       margin: 0 auto;
     }
-	
-	.customer-select {
-	  padding: 7px 12px;
-	  border-radius: 999px;
-	  border: 1px solid #d1d5db;
-	  font-size: 12px;
-	  font-family: inherit;
-	  background: #fff;
-	  width: 368px;
-	}
+  
+  .customer-select {
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    font-size: 12px;
+    font-family: inherit;
+    background: #fff;
+    width: 368px;
+  }
 
     .container {
       background: #ffffff;
@@ -239,7 +239,7 @@
       overflow: hidden;
       background: #ffffff;
       position: relative;
-	  overflow-x: auto;  /* PENTING: supaya tabel bisa geser kanan-kiri di HP */
+    overflow-x: auto;  /* PENTING: supaya tabel bisa geser kanan-kiri di HP */
     }
 
     .table-wrapper::before {
@@ -292,34 +292,34 @@
     tbody tr:hover {
       background: #ecfdf3;
     }
-	
-	/* Highlight baris yang sudah diisi */
-	tbody tr.row-filled {
-	  background: linear-gradient(90deg, #d1fae5 0%, #ecfdf5 100%) !important;
-	  border-left: 3px solid #10b981;
-	}
+  
+  /* Highlight baris yang sudah diisi */
+  tbody tr.row-filled {
+    background: linear-gradient(90deg, #d1fae5 0%, #ecfdf5 100%) !important;
+    border-left: 3px solid #10b981;
+  }
 
-	tbody tr.row-filled td:first-child {
-	  font-weight: 700;
-	  color: var(--primary-dark);
-	}
+  tbody tr.row-filled td:first-child {
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
 
-	tbody tr.row-filled td[data-role="total"] {
-	  font-weight: 700;
-	  color: var(--primary-dark);
-	}
+  tbody tr.row-filled td[data-role="total"] {
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
 
-	tbody tr.row-filled input.box-input {
-	  background: #ffffff;
-	  border-color: #10b981;
-	  font-weight: 600;
-	  color: var(--primary-dark);
-	  box-shadow: 0 0 0 1px rgba(16,185,129,0.35);
-	}
+  tbody tr.row-filled input.box-input {
+    background: #ffffff;
+    border-color: #10b981;
+    font-weight: 600;
+    color: var(--primary-dark);
+    box-shadow: 0 0 0 1px rgba(16,185,129,0.35);
+  }
 
-	tbody tr.row-filled:hover {
-	  background: linear-gradient(90deg, #bbf7d0 0%, #d1fae5 100%) !important;
-	}
+  tbody tr.row-filled:hover {
+    background: linear-gradient(90deg, #bbf7d0 0%, #d1fae5 100%) !important;
+  }
 
     tfoot td {
       font-weight: 600;
@@ -332,10 +332,10 @@
     tfoot td:nth-child(2) {
       color: var(--primary-dark);
     }
-	
-	.table-wrapper tfoot {
-	  display: none;
-	}
+  
+  .table-wrapper tfoot {
+    display: none;
+  }
 
 
     input.box-input {
@@ -461,7 +461,7 @@
         font-size: 15px;
       }
     }
-	/* Tablet & HP lebar sedang */
+  /* Tablet & HP lebar sedang */
 @media (max-width: 900px) {
   body {
     padding: 12px;
@@ -600,7 +600,7 @@
       <p class="note">
         Input hanya pada kolom <b>Karung</b>, kolom lain akan terhitung otomatis.<br>
         Pilih Tab <b>Harga</b> untuk menampilkan harga yang sesuai minimal order.<br><br>
-		<b style="color: red;">LAST PRICE UPDATE : 18 Agustus 2026</b>
+    <b style="color: red;">LAST PRICE UPDATE : 01 September 2026</b>
       </p>
 
       <div class="top-actions">
@@ -610,72 +610,73 @@
           <!--<button class="btn-moq" data-moq="100">Harga 100 Karung</button>
           <button class="btn-moq" data-moq="200">Harga 200 Karung</button>
           <button class="btn-moq" data-moq="300">Harga 300 Karung</button>-->
-		  <button class="btn-moq" data-moq="hotel">Harga Horeca Fix/Kontrak</button>
-		  <button class="btn-moq" data-moq="winglok">Harga Winglok</button>
-		  <button class="btn-moq" data-moq="cfc">Harga CFC</button>
+      <button class="btn-moq" data-moq="hotel">Harga Horeca Fix/Kontrak</button>
+      <button class="btn-moq" data-moq="winglok">Harga Winglok</button>
+      <button class="btn-moq" data-moq="cfc">Harga CFC</button>
+      <button class="btn-moq" data-moq="psafkir">Harga PS Afkir</button>
         </div>
 
         <div class="action-buttons">
-		<select id="customer-select" class="customer-select">
-		<option value="">-- Tanpa Nama Customer --</option>
-			<option>Ahdian (Resto Bebek Rica-Rica)</option>
-			<option>Ahmad Rofiqi</option>
-			<option>Ahmad Romli</option>
-			<option>Ahmad Sanuri</option>
-			<option>Ahmad Yani</option>
-			<option>Aji Sartono</option>
-			<option>Astani Hendri Arif</option>
-			<option>Beni</option>
-			<option>Cash Office Jakarta</option>
-			<option>CV Tenard Jaya</option>
-			<option>CV Sukses Makmur</option>
-			<option>CV Boga Canton Mandiri (Resto Mie Tiong Sim)</option>
-			<option>Deni Priyansyah</option>
-			<option>Deva Fajar Iputra</option>
-			<option>Edi Sucipto</option>
-			<option>Emmul</option>
-			<option>Fadlan</option>
-			<option>Haryono</option>
-			<option>Joko Agus Haryono</option>
-			<option>Joko Permadi</option>
-			<option>Joko Purnomo</option>
-			<option>Kent Wijaya</option>
-			<option>Lilis Karina</option>
-			<option>Maswaroh</option>
-			<option>Miftah Fariq</option>
-			<option>Moh Di Ah</option>
-			<option>Mohammad Kun Lilyaqin (Resto Bebek Merakyat)</option>
-			<option>Nurul Fajriyah</option>
-			<option>Oka Suprapto (Resto Yung Ci)</option>
-			<option>Parnanto</option>
-			<option>PT Femalindo Karya Sejahtera</option>
-			<option>PT Jagad Frozen Foods</option>
-			<option>PT Nabio</option>
-			<option>PT Sendang Rejeki Binangkit</option>
-			<option>PT Sumber Natural Indonesia (Resto Golden Lamian)</option>
-			<option>PT Twelve Nippindo Paradiso (Resto Twelve Chinese Dining)</option>
-			<option>PT Malindo Food Delight</option>
-			<option>PT Sembilan Sejahtera</option>
-			<option>Rahman</option>
-			<option>Rio Ridwan Maulana</option>
-			<option>Santo</option>
-			<option>Sasmito</option>
-			<option>Siladin</option>
-			<option>Sudjadi</option>
-			<option>Sukarni</option>
-			<option>Supriyanto (Resto Dapoer Langganan)</option>
-			<option>Teguh Nurcipto</option>
-			<option>Tilakhur Rahman</option>
-			<option>Tjhin Men Kiat</option>
-			<option>Yatin</option>
+    <select id="customer-select" class="customer-select">
+    <option value="">-- Tanpa Nama Customer --</option>
+      <option>Ahdian (Resto Bebek Rica-Rica)</option>
+      <option>Ahmad Rofiqi</option>
+      <option>Ahmad Romli</option>
+      <option>Ahmad Sanuri</option>
+      <option>Ahmad Yani</option>
+      <option>Aji Sartono</option>
+      <option>Astani Hendri Arif</option>
+      <option>Beni</option>
+      <option>Cash Office Jakarta</option>
+      <option>CV Tenard Jaya</option>
+      <option>CV Sukses Makmur</option>
+      <option>CV Boga Canton Mandiri (Resto Mie Tiong Sim)</option>
+      <option>Deni Priyansyah</option>
+      <option>Deva Fajar Iputra</option>
+      <option>Edi Sucipto</option>
+      <option>Emmul</option>
+      <option>Fadlan</option>
+      <option>Haryono</option>
+      <option>Joko Agus Haryono</option>
+      <option>Joko Permadi</option>
+      <option>Joko Purnomo</option>
+      <option>Kent Wijaya</option>
+      <option>Lilis Karina</option>
+      <option>Maswaroh</option>
+      <option>Miftah Fariq</option>
+      <option>Moh Di Ah</option>
+      <option>Mohammad Kun Lilyaqin (Resto Bebek Merakyat)</option>
+      <option>Nurul Fajriyah</option>
+      <option>Oka Suprapto (Resto Yung Ci)</option>
+      <option>Parnanto</option>
+      <option>PT Femalindo Karya Sejahtera</option>
+      <option>PT Jagad Frozen Foods</option>
+      <option>PT Nabio</option>
+      <option>PT Sendang Rejeki Binangkit</option>
+      <option>PT Sumber Natural Indonesia (Resto Golden Lamian)</option>
+      <option>PT Twelve Nippindo Paradiso (Resto Twelve Chinese Dining)</option>
+      <option>PT Malindo Food Delight</option>
+      <option>PT Sembilan Sejahtera</option>
+      <option>Rahman</option>
+      <option>Rio Ridwan Maulana</option>
+      <option>Santo</option>
+      <option>Sasmito</option>
+      <option>Siladin</option>
+      <option>Sudjadi</option>
+      <option>Sukarni</option>
+      <option>Supriyanto (Resto Dapoer Langganan)</option>
+      <option>Teguh Nurcipto</option>
+      <option>Tilakhur Rahman</option>
+      <option>Tjhin Men Kiat</option>
+      <option>Yatin</option>
       </select>
           <button id="btn-print" class="btn-print" style="display:none;">🖨 Buat Table</button>
-		  <button id="btn-copy-wa" class="btn-print">📋 Buat FO</button>
+      <button id="btn-copy-wa" class="btn-print">📋 Buat FO</button>
           <button id="btn-reset" class="btn-reset">↺ Reset Semua</button>
-		  <button id="btn-download-html" class="btn-print" style="display:none;">💾 Download HTML</button>
+      <button id="btn-download-html" class="btn-print" style="display:none;">💾 Download HTML</button>
 
-		  <input type="file" id="import-excel" accept=".xlsx, .xls" hidden="">
-			<button id="btn-import" class="btn-print" style="display:none;">📥 Import Excel</button>
+      <input type="file" id="import-excel" accept=".xlsx, .xls" hidden="">
+      <button id="btn-import" class="btn-print" style="display:none;">📥 Import Excel</button>
         </div>
       </div>
 
@@ -2059,6 +2060,33 @@
       "priceKg": 0,
       "priceEkor": 116000
     }
+  ],
+  "psafkir": [
+    { "size": "0.6-0.7", "priceKg": 34000, "priceEkor": 22100 },
+    { "size": "0.7-0.8", "priceKg": 34000, "priceEkor": 25500 },
+    { "size": "0.8-0.9", "priceKg": 34000, "priceEkor": 28900 },
+    { "size": "0.9-1.0", "priceKg": 34000, "priceEkor": 32300 },
+    { "size": "1.0-1.1", "priceKg": 34000, "priceEkor": 35700 },
+    { "size": "1.1-1.2", "priceKg": 34000, "priceEkor": 39100 },
+    { "size": "1.2-1.3", "priceKg": 34000, "priceEkor": 42500 },
+    { "size": "1.3-1.4", "priceKg": 34000, "priceEkor": 45900 },
+    { "size": "1.4-1.5", "priceKg": 34000, "priceEkor": 49300 },
+    { "size": "1.5-1.6", "priceKg": 34000, "priceEkor": 52700 },
+    { "size": "1.6-1.7", "priceKg": 34000, "priceEkor": 56100 },
+    { "size": "1.7-1.8", "priceKg": 34000, "priceEkor": 59500 },
+    { "size": "1.8-1.9", "priceKg": 34000, "priceEkor": 62900 },
+    { "size": "1.9-2.0", "priceKg": 34000, "priceEkor": 66300 },
+    { "size": "2.0-2.1", "priceKg": 34000, "priceEkor": 69700 },
+    { "size": "2.1-2.2", "priceKg": 34000, "priceEkor": 73100 },
+    { "size": "2.2-2.3", "priceKg": 34000, "priceEkor": 76500 },
+    { "size": "2.3-2.4", "priceKg": 34000, "priceEkor": 79900 },
+    { "size": "2.4-2.5", "priceKg": 34000, "priceEkor": 83300 },
+    { "size": "2.5-2.6", "priceKg": 34000, "priceEkor": 86700 },
+    { "size": "2.6-2.7", "priceKg": 34000, "priceEkor": 90100 },
+    { "size": "2.7-2.8", "priceKg": 34000, "priceEkor": 93500 },
+    { "size": "2.8-2.9", "priceKg": 34000, "priceEkor": 96900 },
+    { "size": "2.9-3.0", "priceKg": 34000, "priceEkor": 100300 },
+    { "size": ">= 3.0", "priceKg": 33000, "priceEkor": 105600 }
   ]
 };
 
@@ -2250,13 +2278,13 @@
       tdEkor.textContent = ekor.toLocaleString("id-ID");
       tdKg.textContent = parseFloat(tKg.toFixed(2)).toString();
       tdTotal.textContent = formatRupiah(totalPrice);
-	  
-	  // Highlight baris yang sudah diisi
-		if (box > 0) {
-		  tr.classList.add("row-filled");
-		} else {
-		  tr.classList.remove("row-filled");
-		}
+    
+    // Highlight baris yang sudah diisi
+    if (box > 0) {
+      tr.classList.add("row-filled");
+    } else {
+      tr.classList.remove("row-filled");
+    }
     });
 
     document.getElementById("total-box").textContent = totalBox.toLocaleString("id-ID");
@@ -2276,17 +2304,17 @@
       moqButtons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentMOQ = btn.dataset.moq;
-	  
-	  const select = document.getElementById("customer-select");
+    
+    const select = document.getElementById("customer-select");
 
     if (currentMOQ === "hotel") {
       select.innerHTML = `
         <option value="">-- Tanpa Nama Customer --</option>
-		<option>PT Cipta Artha Sepuluh (Resto Suck My Duck)</option>
-		<option>PT Good Taste International (Resto Good Taste Indonesia)</option>
+    <option>PT Cipta Artha Sepuluh (Resto Suck My Duck)</option>
+    <option>PT Good Taste International (Resto Good Taste Indonesia)</option>
         <option>PT Mutiara Permata Mulia (Ritz Carlton)</option>
-		<option>PT Permata Birama Sakti (JW Marriott) </option>
-		<option>PT Pacific Place Jakarta</option>
+    <option>PT Permata Birama Sakti (JW Marriott) </option>
+    <option>PT Pacific Place Jakarta</option>
       `;
     }
 
@@ -2294,13 +2322,13 @@
       select.innerHTML = `
         <option value="">-- Tanpa Nama Customer --</option>
         <option>PT Lancar Inti Nusantara (Winglok/Wingheng)</option>
-		<option>PT Selera Boga Amerta (Winglok/Wingheng)</option>
-		<option>PT Selera Boga Asia (Winglok/Wingheng)</option>
-		<option>PT Selera Boga Indonesia (Winglok/Wingheng)</option>
-		<option>PT Selera Boga Tenteram (Winglok/Wingheng)</option>
+    <option>PT Selera Boga Amerta (Winglok/Wingheng)</option>
+    <option>PT Selera Boga Asia (Winglok/Wingheng)</option>
+    <option>PT Selera Boga Indonesia (Winglok/Wingheng)</option>
+    <option>PT Selera Boga Tenteram (Winglok/Wingheng)</option>
       `;
     }
-	else if (currentMOQ === "cfc") {
+  else if (currentMOQ === "cfc") {
       select.innerHTML = `
         <option>PT Pioneerindo Gourmet Int'l Tbk (CFC Group)</option>
       `;
@@ -2308,57 +2336,57 @@
 
     else {
       select.innerHTML = `
-		<option value="">-- Tanpa Nama Customer --</option>
-			<option>Ahdian (Resto Bebek Rica-Rica)</option>
-			<option>Ahmad Rofiqi</option>
-			<option>Ahmad Romli</option>
-			<option>Ahmad Sanuri</option>
-			<option>Ahmad Yani</option>
-			<option>Aji Sartono</option>
-			<option>Astani Hendri Arif</option>
-			<option>Beni</option>
-			<option>Cash Office Jakarta</option>
-			<option>CV Tenard Jaya</option>
-			<option>CV Sukses Makmur</option>
-			<option>CV Boga Canton Mandiri (Resto Mie Tiong Sim)</option>
-			<option>Deni Priyansyah</option>
-			<option>Deva Fajar Iputra</option>
-			<option>Edi Sucipto</option>
-			<option>Emmul</option>
-			<option>Fadlan</option>
-			<option>Haryono</option>
-			<option>Joko Agus Haryono</option>
-			<option>Joko Permadi</option>
-			<option>Joko Purnomo</option>
-			<option>Kent Wijaya</option>
-			<option>Lilis Karina</option>
-			<option>Maswaroh</option>
-			<option>Miftah Fariq</option>
-			<option>Moh Di Ah</option>
-			<option>Mohammad Kun Lilyaqin (Resto Bebek Merakyat)</option>
-			<option>Nurul Fajriyah</option>
-			<option>Oka Suprapto (Resto Yung Ci)</option>
-			<option>Parnanto</option>
-			<option>PT Femalindo Karya Sejahtera</option>
-			<option>PT Jagad Frozen Foods</option>
-			<option>PT Nabio</option>
-			<option>PT Sendang Rejeki Binangkit</option>
-			<option>PT Sumber Natural Indonesia (Resto Golden Lamian)</option>
-			<option>PT Twelve Nippindo Paradiso (Resto Twelve Chinese Dining)</option>
-			<option>PT Malindo Food Delight</option>
-			<option>PT Sembilan Sejahtera</option>
-			<option>Rahman</option>
-			<option>Rio Ridwan Maulana</option>
-			<option>Santo</option>
-			<option>Sasmito</option>
-			<option>Siladin</option>
-			<option>Sudjadi</option>
-			<option>Sukarni</option>
-			<option>Supriyanto (Resto Dapoer Langganan)</option>
-			<option>Teguh Nurcipto</option>
-			<option>Tilakhur Rahman</option>
-			<option>Tjhin Men Kiat</option>
-			<option>Yatin</option>
+    <option value="">-- Tanpa Nama Customer --</option>
+      <option>Ahdian (Resto Bebek Rica-Rica)</option>
+      <option>Ahmad Rofiqi</option>
+      <option>Ahmad Romli</option>
+      <option>Ahmad Sanuri</option>
+      <option>Ahmad Yani</option>
+      <option>Aji Sartono</option>
+      <option>Astani Hendri Arif</option>
+      <option>Beni</option>
+      <option>Cash Office Jakarta</option>
+      <option>CV Tenard Jaya</option>
+      <option>CV Sukses Makmur</option>
+      <option>CV Boga Canton Mandiri (Resto Mie Tiong Sim)</option>
+      <option>Deni Priyansyah</option>
+      <option>Deva Fajar Iputra</option>
+      <option>Edi Sucipto</option>
+      <option>Emmul</option>
+      <option>Fadlan</option>
+      <option>Haryono</option>
+      <option>Joko Agus Haryono</option>
+      <option>Joko Permadi</option>
+      <option>Joko Purnomo</option>
+      <option>Kent Wijaya</option>
+      <option>Lilis Karina</option>
+      <option>Maswaroh</option>
+      <option>Miftah Fariq</option>
+      <option>Moh Di Ah</option>
+      <option>Mohammad Kun Lilyaqin (Resto Bebek Merakyat)</option>
+      <option>Nurul Fajriyah</option>
+      <option>Oka Suprapto (Resto Yung Ci)</option>
+      <option>Parnanto</option>
+      <option>PT Femalindo Karya Sejahtera</option>
+      <option>PT Jagad Frozen Foods</option>
+      <option>PT Nabio</option>
+      <option>PT Sendang Rejeki Binangkit</option>
+      <option>PT Sumber Natural Indonesia (Resto Golden Lamian)</option>
+      <option>PT Twelve Nippindo Paradiso (Resto Twelve Chinese Dining)</option>
+      <option>PT Malindo Food Delight</option>
+      <option>PT Sembilan Sejahtera</option>
+      <option>Rahman</option>
+      <option>Rio Ridwan Maulana</option>
+      <option>Santo</option>
+      <option>Sasmito</option>
+      <option>Siladin</option>
+      <option>Sudjadi</option>
+      <option>Sukarni</option>
+      <option>Supriyanto (Resto Dapoer Langganan)</option>
+      <option>Teguh Nurcipto</option>
+      <option>Tilakhur Rahman</option>
+      <option>Tjhin Men Kiat</option>
+      <option>Yatin</option>
       `;
     }
       renderTable();
@@ -2468,8 +2496,8 @@
     inputs.forEach(input => {
       input.value = "";
     });
-	
-	document.getElementById("customer-select").value = "";
+  
+  document.getElementById("customer-select").value = "";
 
     recalcTotals(); // perbarui total
   });
@@ -2542,8 +2570,8 @@ document.getElementById("btn-download-html").addEventListener("click", () => {
 
   URL.revokeObjectURL(url);
 });
-	
-	function copyWA() {
+  
+  function copyWA() {
   const textArea = document.getElementById("wa-text");
   textArea.select();
   document.execCommand("copy");
@@ -2564,21 +2592,21 @@ document.getElementById("btn-copy-wa").addEventListener("click", function () {
     if (tds.length === 0) return;
 
     const size = tds[1].textContent.trim();
-	
-	let currentGrade = size.includes("B") ? "B" : "A";
-	
-	const input = tds[2].querySelector("input.box-input");
+  
+  let currentGrade = size.includes("B") ? "B" : "A";
+  
+  const input = tds[2].querySelector("input.box-input");
     const karung = parseFloat(input && input.value ? input.value : "0") || 0;
 
     if (karung <= 0) return;
 
-	// kalau pindah dari A ke B → kasih enter
-	if (lastGrade !== currentGrade) {
+  // kalau pindah dari A ke B → kasih enter
+  if (lastGrade !== currentGrade) {
     if (lastGrade !== null) rawText += "\n"; // pemisah antar grade
     rawText += "Grade " + currentGrade + "\n"; // header grade
     }
 
-	lastGrade = currentGrade;
+  lastGrade = currentGrade;
 
     const ekorText = tds[3].textContent.trim();
     const priceEkorText = tds[6].textContent.trim();
