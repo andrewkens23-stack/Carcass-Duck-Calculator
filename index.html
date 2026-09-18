@@ -612,6 +612,7 @@
           <button class="btn-moq" data-moq="200">Harga 200 Karung</button>
           <button class="btn-moq" data-moq="300">Harga 300 Karung</button>-->
       <button class="btn-moq" data-moq="hotel">Harga Horeca Fix/Kontrak</button>
+      <button class="btn-moq" data-moq="goodtaste">Harga Good Taste </button>
       <button class="btn-moq" data-moq="winglok">Harga Winglok</button>
       <button class="btn-moq" data-moq="cfc">Harga CFC</button>
         </div>
@@ -1126,11 +1127,14 @@
     { "size": "2.6-2.7", "priceKg": 0, "priceEkor": 114000 },
     { "size": "2.7-2.8", "priceKg": 0, "priceEkor": 114000 }
   ],
+  "goodtaste": [
+    { "size": "2.3-2.4", "priceKg": 0, "priceEkor": 104000 }
+  ],
   "winglok": [
-    { "size": "2.5-2.6", "priceKg": 0, "priceEkor": 107100 },
-    { "size": "2.6-2.7", "priceKg": 0, "priceEkor": 111300 },
-    { "size": "2.7-2.8", "priceKg": 0, "priceEkor": 115500 },
-    { "size": "2.8-2.9", "priceKg": 0, "priceEkor": 119130 }
+    { "size": "2.5-2.6", "priceKg": 0, "priceEkor": 110925 },
+    { "size": "2.6-2.7", "priceKg": 0, "priceEkor": 115275 },
+    { "size": "2.7-2.8", "priceKg": 0, "priceEkor": 118250 },
+    { "size": "2.8-2.9", "priceKg": 0, "priceEkor": 122550 }
   ],
   "cfc": [
     { "size": "2.3-2.4", "priceKg": 0, "priceEkor": 103000 },
@@ -1384,10 +1388,15 @@
       select.innerHTML = `
         <option value="">-- Tanpa Nama Customer --</option>
     <option>PT Cipta Artha Sepuluh (Resto Suck My Duck)</option>
-    <option>PT Good Taste International (Resto Good Taste Indonesia)</option>
         <option>PT Mutiara Permata Mulia (Ritz Carlton)</option>
     <option>PT Permata Birama Sakti (JW Marriott) </option>
     <option>PT Pacific Place Jakarta</option>
+      `;
+    }
+
+    else if (currentMOQ === "goodtaste") {
+      select.innerHTML = `
+        <option>PT Good Taste International (Resto Good Taste Indonesia)</option>
       `;
     }
 
