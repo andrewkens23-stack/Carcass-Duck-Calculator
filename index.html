@@ -4,7 +4,6 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦆</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font agar tampilan lebih modern -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -294,7 +293,6 @@
       background: #ecfdf3;
     }
   
-  /* Highlight baris yang sudah diisi */
   tbody tr.row-filled {
     background: linear-gradient(90deg, #d1fae5 0%, #ecfdf5 100%) !important;
     border-left: 3px solid #10b981;
@@ -462,7 +460,7 @@
         font-size: 15px;
       }
     }
-  /* Tablet & HP lebar sedang */
+  
 @media (max-width: 900px) {
   body {
     padding: 12px;
@@ -486,11 +484,11 @@
     overflow-x: auto;
   }
   table {
-    min-width: 700px; /* tabel tetap lebar, tapi bisa di-swipe horizontal */
+    min-width: 700px;
   }
 }
 
-/* HP (kecil–sedang) */
+
 @media (max-width: 640px) {
   body {
     padding: 10px;
@@ -518,7 +516,7 @@
     padding: 8px 9px;
   }
 
-  /* Tombol minimal order dibikin 2 kolom */
+  
   .btn-group {
     width: 100%;
     display: flex;
@@ -533,7 +531,7 @@
     padding: 6px 8px;
   }
 
-  /* Tombol print & reset full width */
+  
   .action-buttons {
     width: 100%;
     display: flex;
@@ -549,7 +547,7 @@
     padding: 7px 10px;
   }
 
-  /* Kartu ringkasan ditumpuk ke bawah */
+  
   .summary {
     flex-direction: column;
     gap: 8px;
@@ -560,7 +558,6 @@
   }
 }
 
-/* HP sangat kecil */
 @media (max-width: 480px) {
   h1 {
     font-size: 17px;
@@ -734,7 +731,6 @@
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
   <script>
-  // DATA HARGA DARI EXCEL (semua size + Grade B)
   const priceTables = {
   "10": [
     { "size": "0.6-0.7", "priceKg": 43000, "priceEkor": 27950 },
@@ -1144,7 +1140,6 @@
   ]
 };
 
-  // ISI EKOR PER BOX (bisa kamu sesuaikan dengan aturanmu)
   const piecesPerBox = {
     "0.6-0.7": 15,
     "0.7-0.8": 15,
@@ -1356,7 +1351,6 @@
       tdKg.textContent = parseFloat(tKg.toFixed(2)).toString();
       tdTotal.textContent = formatRupiah(totalPrice);
     
-    // Highlight baris yang sudah diisi
     if (box > 0) {
       tr.classList.add("row-filled");
     } else {
@@ -1475,7 +1469,6 @@
     });
   });
 
-  // Tombol Print - hanya baris dengan Box > 0 dan kolom tertentu
   document.getElementById("btn-print").addEventListener("click", function () {
   const trs = tbody.querySelectorAll("tr");
 
@@ -1495,14 +1488,12 @@
     const input = tds[2].querySelector("input.box-input");
     const box = parseFloat(input && input.value ? input.value : "0") || 0;
 
-    // ❗ wajib setelah box
     if (box <= 0) return;
 
     const ekorText = tds[3].textContent.trim();
     const priceEkorText = tds[6].textContent.trim();
     const totalPriceText = tds[7].textContent.trim();
 
-    // konversi angka
     const ekorNum = parseInt(ekorText.replace(/\./g, "")) || 0;
     const totalNum = parseInt(totalPriceText.replace(/[^0-9]/g, "")) || 0;
 
@@ -1510,7 +1501,6 @@
     totalEkor += ekorNum;
     grandTotal += totalNum;
 
-    // tabel print
     printRowsHtml +=
       '<tr>' +
         '<td style="text-align:left;">' + size + '</td>' +
@@ -1520,11 +1510,9 @@
         '<td style="text-align:right;">' + totalPriceText + '</td>' +
       '</tr>';
 
-    // ✅ TEXT WA (DI SINI YANG BENAR)
     rawText += "• " + size + " → " + box + " karung (" + ekorText + " ekor) @" + priceEkorText;
   });
 
-  // TOTAL
   rawText += "\n *TOTAL : " + formatRupiah(grandTotal) + "*";
 
   if (!printRowsHtml) {
@@ -1571,7 +1559,6 @@
   w.print();
 });
 
-  // Tombol Reset - mengosongkan semua input
   document.getElementById("btn-reset").addEventListener("click", function () {
     const inputs = document.querySelectorAll("input.box-input");
 
@@ -1581,10 +1568,9 @@
   
   document.getElementById("customer-select").value = "";
 
-    recalcTotals(); // perbarui total
+    recalcTotals();
   });
 
-  // Render awal
   renderTable();
   
   document.getElementById("btn-import").addEventListener("click", () => {
@@ -1601,14 +1587,12 @@ document.getElementById("import-excel").addEventListener("change", function (e) 
     const data = new Uint8Array(evt.target.result);
     const workbook = XLSX.read(data, { type: "array" });
 
-    // Ambil semua sheet
     const newPriceTables = {};
 
     workbook.SheetNames.forEach(sheetName => {
       const sheet = workbook.Sheets[sheetName];
       const json = XLSX.utils.sheet_to_json(sheet);
 
-      // Contoh nama sheet: "300 Karung"
       const moq = sheetName.replace(/\D/g, "");
 
       newPriceTables[moq] = json.map(row => ({
@@ -1618,7 +1602,6 @@ document.getElementById("import-excel").addEventListener("change", function (e) 
       }));
     });
 
-    // Replace data lama
     Object.assign(priceTables, newPriceTables);
 
     alert("✅ Harga berhasil di-import dari Excel!");
@@ -1630,10 +1613,8 @@ document.getElementById("import-excel").addEventListener("change", function (e) 
 
 document.getElementById("btn-download-html").addEventListener("click", () => {
 
-  // Ambil seluruh HTML
   let html = document.documentElement.outerHTML;
 
-  // Replace isi priceTables lama dengan yang baru
   const newData = JSON.stringify(priceTables, null, 2);
 
   html = html.replace(
@@ -1641,7 +1622,6 @@ document.getElementById("btn-download-html").addEventListener("click", () => {
     `const priceTables = ${newData};`
   );
 
-  // Buat file download
   const blob = new Blob([html], { type: "text/html" });
   const url = URL.createObjectURL(blob);
 
@@ -1682,7 +1662,6 @@ document.getElementById("btn-copy-wa").addEventListener("click", function () {
 
     if (karung <= 0) return;
 
-  // kalau pindah grade → kasih enter
   if (lastGrade !== currentGrade) {
     if (lastGrade !== null) rawText += "\n"; // pemisah antar grade
     const gradeLabel = currentGrade === "PSAFKIR" ? "PS Afkir" : "Grade " + currentGrade;
