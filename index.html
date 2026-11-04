@@ -669,6 +669,15 @@
   #price-table tbody tr[data-mode="new"]:not(.row-filled):hover td:nth-child(2) {
     background: #eff6ff;
   }
+
+  /* Kotak input NEW QTY saat diklik/fokus: biru */
+  tbody tr[data-mode="new"] input.box-input:focus,
+  tbody tr.row-filled[data-mode="new"] input.box-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.35);
+  }
   </style>
 </head>
 <body>
