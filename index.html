@@ -281,7 +281,9 @@
     th:first-child,
     td:first-child,
     th:nth-child(2),
-    td:nth-child(2) {
+    td:nth-child(2),
+    th:nth-child(3),
+    td:nth-child(3) {
       text-align: left;
     }
 
@@ -606,6 +608,67 @@
   #price-table tbody tr.row-filled:hover td:nth-child(2) {
     background: #bbf7d0;
   }
+
+  /* Judul pemisah NEW QTY */
+  tbody tr.section-row,
+  tbody tr.section-row:hover,
+  tbody tr.section-row:nth-child(even) {
+    background: linear-gradient(90deg, #0f766e 0%, #0ea5e9 100%) !important;
+  }
+  tbody tr.section-row td {
+    text-align: center;
+    padding: 10px 12px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    border-bottom: none;
+  }
+  tbody tr.section-row .section-title {
+    display: inline-block;
+  }
+  /* Di HP (tabel bisa digeser), judul ikut tetap di tengah layar */
+  @media (max-width: 900px) {
+    tbody tr.section-row .section-title {
+      display: block;
+      position: sticky;
+      left: 0;
+      width: calc(100vw - 52px);
+      text-align: center;
+    }
+  }
+
+  /* Highlight biru untuk baris NEW QTY yang terisi (pembeda dari qty lama yang hijau) */
+  tbody tr.row-filled[data-mode="new"] {
+    background: linear-gradient(90deg, #bfdbfe 0%, #eff6ff 100%) !important;
+    border-left: 3px solid #2563eb;
+  }
+  tbody tr.row-filled[data-mode="new"]:hover {
+    background: linear-gradient(90deg, #93c5fd 0%, #dbeafe 100%) !important;
+  }
+  tbody tr.row-filled[data-mode="new"] td:first-child,
+  tbody tr.row-filled[data-mode="new"] td[data-role="total"] {
+    color: #1d4ed8;
+  }
+  tbody tr.row-filled[data-mode="new"] input.box-input {
+    border-color: #2563eb;
+    color: #1d4ed8;
+    box-shadow: 0 0 0 1px rgba(37,99,235,0.35);
+  }
+  #price-table tbody tr.row-filled[data-mode="new"] td:nth-child(2) {
+    background: #bfdbfe;
+  }
+  #price-table tbody tr.row-filled[data-mode="new"]:hover td:nth-child(2) {
+    background: #93c5fd;
+  }
+
+  /* Hover biru untuk baris NEW QTY (belum terisi) */
+  tbody tr[data-mode="new"]:not(.row-filled):hover {
+    background: #eff6ff;
+  }
+  #price-table tbody tr[data-mode="new"]:not(.row-filled):hover td:nth-child(2) {
+    background: #eff6ff;
+  }
   </style>
 </head>
 <body>
@@ -712,6 +775,7 @@
             <tr>
               <th>No</th>
               <th>Size</th>
+              <th>Kode Item</th>
               <th>Karung</th>
               <th>Ekor</th>
               <th>T.Kg</th>
@@ -723,7 +787,7 @@
           <tbody><tr><td>1</td><td>0.6-0.7</td><td><input type="number" min="0" class="box-input" data-index="0"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>27.950</td><td data-role="total">Rp 0</td></tr><tr><td>2</td><td>0.7-0.8</td><td><input type="number" min="0" class="box-input" data-index="1"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>44.000</td><td>33.000</td><td data-role="total">Rp 0</td></tr><tr><td>3</td><td>0.8-0.9</td><td><input type="number" min="0" class="box-input" data-index="2"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>44.000</td><td>37.400</td><td data-role="total">Rp 0</td></tr><tr><td>4</td><td>0.9-1.0</td><td><input type="number" min="0" class="box-input" data-index="3"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>44.000</td><td>41.800</td><td data-role="total">Rp 0</td></tr><tr><td>5</td><td>1.0-1.1</td><td><input type="number" min="0" class="box-input" data-index="4"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>44.000</td><td>46.200</td><td data-role="total">Rp 0</td></tr><tr><td>6</td><td>1.1-1.2</td><td><input type="number" min="0" class="box-input" data-index="5"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>4.944.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>7</td><td>1.2-1.3</td><td><input type="number" min="0" class="box-input" data-index="6"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>53.750</td><td data-role="total">Rp 0</td></tr><tr><td>8</td><td>1.3-1.4</td><td><input type="number" min="0" class="box-input" data-index="7"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>5.805.000.000.000.001</td><td data-role="total">Rp 0</td></tr><tr><td>9</td><td>1.4-1.5</td><td><input type="number" min="0" class="box-input" data-index="8"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>62.350</td><td data-role="total">Rp 0</td></tr><tr><td>10</td><td>1.5-1.6</td><td><input type="number" min="0" class="box-input" data-index="9"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>65.100</td><td data-role="total">Rp 0</td></tr><tr><td>11</td><td>1.6-1.7</td><td><input type="number" min="0" class="box-input" data-index="10"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>69.300</td><td data-role="total">Rp 0</td></tr><tr><td>12</td><td>1.7-1.8</td><td><input type="number" min="0" class="box-input" data-index="11"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>75.250</td><td data-role="total">Rp 0</td></tr><tr><td>13</td><td>1.8-1.9</td><td><input type="number" min="0" class="box-input" data-index="12"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>79.550</td><td data-role="total">Rp 0</td></tr><tr><td>14</td><td>1.9-2.0</td><td><input type="number" min="0" class="box-input" data-index="13"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>83.850</td><td data-role="total">Rp 0</td></tr><tr><td>15</td><td>2.0-2.1</td><td><input type="number" min="0" class="box-input" data-index="14"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>8.814.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>16</td><td>2.1-2.2</td><td><input type="number" min="0" class="box-input" data-index="15"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>92.450</td><td data-role="total">Rp 0</td></tr><tr><td>17</td><td>2.2-2.3</td><td><input type="number" min="0" class="box-input" data-index="16"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>96.750</td><td data-role="total">Rp 0</td></tr><tr><td>18</td><td>2.3-2.4</td><td><input type="number" min="0" class="box-input" data-index="17"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>101.050</td><td data-role="total">Rp 0</td></tr><tr><td>19</td><td>2.4-2.5</td><td><input type="number" min="0" class="box-input" data-index="18"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>10.535.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>20</td><td>2.5-2.6</td><td><input type="number" min="0" class="box-input" data-index="19"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>10.965.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>21</td><td>2.6-2.7</td><td><input type="number" min="0" class="box-input" data-index="20"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>113.950</td><td data-role="total">Rp 0</td></tr><tr><td>22</td><td>2.7-2.8</td><td><input type="number" min="0" class="box-input" data-index="21"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>118.250</td><td data-role="total">Rp 0</td></tr><tr><td>23</td><td>2.8-2.9</td><td><input type="number" min="0" class="box-input" data-index="22"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.800</td><td>121.980</td><td data-role="total">Rp 0</td></tr><tr><td>24</td><td>2.9-3.0</td><td><input type="number" min="0" class="box-input" data-index="23"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>12.390.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>25</td><td>&gt;= 3.0</td><td><input type="number" min="0" class="box-input" data-index="24"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>40.500</td><td>129.600</td><td data-role="total">Rp 0</td></tr><tr><td>26</td><td>0.6-0.7 Grade B</td><td><input type="number" min="0" class="box-input" data-index="25"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>27.300</td><td data-role="total">Rp 0</td></tr><tr><td>27</td><td>0.7-0.8 Grade B</td><td><input type="number" min="0" class="box-input" data-index="26"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>32.250</td><td data-role="total">Rp 0</td></tr><tr><td>28</td><td>0.8-0.9 Grade B</td><td><input type="number" min="0" class="box-input" data-index="27"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>36.550</td><td data-role="total">Rp 0</td></tr><tr><td>29</td><td>0.9-1.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="28"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>40.850</td><td data-role="total">Rp 0</td></tr><tr><td>30</td><td>1.0-1.1 Grade B</td><td><input type="number" min="0" class="box-input" data-index="29"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>43.000</td><td>45.150</td><td data-role="total">Rp 0</td></tr><tr><td>31</td><td>1.1-1.2 Grade B</td><td><input type="number" min="0" class="box-input" data-index="30"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>4.829.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>32</td><td>1.2-1.3 Grade B</td><td><input type="number" min="0" class="box-input" data-index="31"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>52.500</td><td data-role="total">Rp 0</td></tr><tr><td>33</td><td>1.3-1.4 Grade B</td><td><input type="number" min="0" class="box-input" data-index="32"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>5.670.000.000.000.001</td><td data-role="total">Rp 0</td></tr><tr><td>34</td><td>1.4-1.5 Grade B</td><td><input type="number" min="0" class="box-input" data-index="33"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>60.900</td><td data-role="total">Rp 0</td></tr><tr><td>35</td><td>1.5-1.6 Grade B</td><td><input type="number" min="0" class="box-input" data-index="34"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>63.550</td><td data-role="total">Rp 0</td></tr><tr><td>36</td><td>1.6-1.7 Grade B</td><td><input type="number" min="0" class="box-input" data-index="35"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>67.650</td><td data-role="total">Rp 0</td></tr><tr><td>37</td><td>1.7-1.8 Grade B</td><td><input type="number" min="0" class="box-input" data-index="36"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>73.500</td><td data-role="total">Rp 0</td></tr><tr><td>38</td><td>1.8-1.9 Grade B</td><td><input type="number" min="0" class="box-input" data-index="37"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>77.700</td><td data-role="total">Rp 0</td></tr><tr><td>39</td><td>1.9-2.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="38"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>81.900</td><td data-role="total">Rp 0</td></tr><tr><td>40</td><td>2.0-2.1 Grade B</td><td><input type="number" min="0" class="box-input" data-index="39"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>8.609.999.999.999.999</td><td data-role="total">Rp 0</td></tr><tr><td>41</td><td>2.1-2.2 Grade B</td><td><input type="number" min="0" class="box-input" data-index="40"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>90.300</td><td data-role="total">Rp 0</td></tr><tr><td>42</td><td>2.2-2.3 Grade B</td><td><input type="number" min="0" class="box-input" data-index="41"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>94.500</td><td data-role="total">Rp 0</td></tr><tr><td>43</td><td>2.3-2.4 Grade B</td><td><input type="number" min="0" class="box-input" data-index="42"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>98.700</td><td data-role="total">Rp 0</td></tr><tr><td>44</td><td>2.4-2.5 Grade B</td><td><input type="number" min="0" class="box-input" data-index="43"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>10.290.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>45</td><td>2.5-2.6 Grade B</td><td><input type="number" min="0" class="box-input" data-index="44"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>10.710.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>46</td><td>2.6-2.7 Grade B</td><td><input type="number" min="0" class="box-input" data-index="45"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>111.300</td><td data-role="total">Rp 0</td></tr><tr><td>47</td><td>2.7-2.8 Grade B</td><td><input type="number" min="0" class="box-input" data-index="46"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>42.000</td><td>115.500</td><td data-role="total">Rp 0</td></tr><tr><td>48</td><td>2.8-2.9 Grade B</td><td><input type="number" min="0" class="box-input" data-index="47"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.800</td><td>119.130</td><td data-role="total">Rp 0</td></tr><tr><td>49</td><td>2.9-3.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="48"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>41.000</td><td>12.095.000.000.000.000</td><td data-role="total">Rp 0</td></tr><tr><td>50</td><td>&gt;= 3.0 Grade B</td><td><input type="number" min="0" class="box-input" data-index="49"></td><td data-role="ekor">0</td><td data-role="kg">0</td><td>39.500</td><td>126.400</td><td data-role="total">Rp 0</td></tr></tbody>
           <tfoot>
             <tr>
-              <td colspan="2">TOTAL</td>
+              <td colspan="3">TOTAL</td>
               <td id="total-box">0</td>
               <td id="total-ekor">0</td>
               <td id="total-kg">0.00</td>
@@ -2770,6 +2834,202 @@
   ]
 };
 
+  const itemCodes = {
+    "<= 0.6": "FGB0270",
+    "0.6-0.7": "FGB0271",
+    "0.7-0.8": "FGB0272",
+    "0.8-0.9": "FGB0273",
+    "0.9-1.0": "FGB0274",
+    "1.0-1.1": "FGB0275",
+    "1.1-1.2": "FGB0276",
+    "1.2-1.3": "FGB0277",
+    "1.3-1.4": "FGB0278",
+    "1.4-1.5": "FGB0279",
+    "1.5-1.6": "FGB0280",
+    "1.6-1.7": "FGB0281",
+    "1.7-1.8": "FGB0282",
+    "1.8-1.9": "FGB0283",
+    "1.9-2.0": "FGB0284",
+    "2.0-2.1": "FGB0285",
+    "2.1-2.2": "FGB0286",
+    "2.2-2.3": "FGB0287",
+    "2.3-2.4": "FGB0288",
+    "2.4-2.5": "FGB0289",
+    "2.5-2.6": "FGB0290",
+    "2.6-2.7": "FGB0291",
+    "2.7-2.8": "FGB0292",
+    "2.8-2.9": "FGB0293",
+    "2.9-3.0": "FGB0294",
+    ">= 3.0": "FGB0228",
+    "<= 0.6 Grade B": "FGB0329",
+    "0.6-0.7 Grade B": "FGB03201",
+    "0.7-0.8 Grade B": "FGB03202",
+    "0.8-0.9 Grade B": "FGB03203",
+    "0.9-1.0 Grade B": "FGB03204",
+    "1.0-1.1 Grade B": "FGB03205",
+    "1.1-1.2 Grade B": "FGB03206",
+    "1.2-1.3 Grade B": "FGB03207",
+    "1.3-1.4 Grade B": "FGB03208",
+    "1.4-1.5 Grade B": "FGB03209",
+    "1.5-1.6 Grade B": "FGB03210",
+    "1.6-1.7 Grade B": "FGB03211",
+    "1.7-1.8 Grade B": "FGB03212",
+    "1.8-1.9 Grade B": "FGB03213",
+    "1.9-2.0 Grade B": "FGB03214",
+    "2.0-2.1 Grade B": "FGB03215",
+    "2.1-2.2 Grade B": "FGB03216",
+    "2.2-2.3 Grade B": "FGB03217",
+    "2.3-2.4 Grade B": "FGB03218",
+    "2.4-2.5 Grade B": "FGB03219",
+    "2.5-2.6 Grade B": "FGB03220",
+    "2.6-2.7 Grade B": "FGB03221",
+    "2.7-2.8 Grade B": "FGB03222",
+    "2.8-2.9 Grade B": "FGB03223",
+    "2.9-3.0 Grade B": "FGB03224",
+    ">= 3.0 Grade B": "FGB0342",
+    "<= 0.6 PS Afkir": "FGB0XXX",
+    "0.6-0.7 PS Afkir": "FGB0471",
+    "0.7-0.8 PS Afkir": "FGB0472",
+    "0.8-0.9 PS Afkir": "FGB0473",
+    "0.9-1.0 PS Afkir": "FGB0474",
+    "1.0-1.1 PS Afkir": "FGB0475",
+    "1.1-1.2 PS Afkir": "FGB0476",
+    "1.2-1.3 PS Afkir": "FGB0477",
+    "1.3-1.4 PS Afkir": "FGB0478",
+    "1.4-1.5 PS Afkir": "FGB0479",
+    "1.5-1.6 PS Afkir": "FGB0480",
+    "1.6-1.7 PS Afkir": "FGB0481",
+    "1.7-1.8 PS Afkir": "FGB0482",
+    "1.8-1.9 PS Afkir": "FGB0483",
+    "1.9-2.0 PS Afkir": "FGB0484",
+    "2.0-2.1 PS Afkir": "FGB0485",
+    "2.1-2.2 PS Afkir": "FGB0486",
+    "2.2-2.3 PS Afkir": "FGB0487",
+    "2.3-2.4 PS Afkir": "FGB0488",
+    "2.4-2.5 PS Afkir": "FGB0489",
+    "2.5-2.6 PS Afkir": "FGB0490",
+    "2.6-2.7 PS Afkir": "FGB0491",
+    "2.7-2.8 PS Afkir": "FGB0492",
+    "2.8-2.9 PS Afkir": "FGB0493",
+    "2.9-3.0 PS Afkir": "FGB0494",
+    ">= 3.0 PS Afkir": "FGB0428"
+  };
+
+  function getKodeItem(size) {
+    return itemCodes[size] || "-";
+  }
+
+  // ===== NEW QTY (karung baru, isi ekor berbeda) =====
+  const newItemCodes = {
+    "<= 0.6": "FGB02001",
+    "<= 0.6 Grade B": "FGB03701",
+    "0.6-0.7": "FGB02002",
+    "0.6-0.7 Grade B": "FGB03702",
+    "0.7-0.8": "FGB02003",
+    "0.7-0.8 Grade B": "FGB03703",
+    "0.8-0.9": "FGB02004",
+    "0.8-0.9 Grade B": "FGB03704",
+    "0.9-1.0": "FGB02005",
+    "0.9-1.0 Grade B": "FGB03705",
+    "1.0-1.1": "FGB02006",
+    "1.0-1.1 Grade B": "FGB03706",
+    "1.1-1.2": "FGB02007",
+    "1.1-1.2 Grade B": "FGB03707",
+    "1.2-1.3": "FGB02008",
+    "1.2-1.3 Grade B": "FGB03708",
+    "1.3-1.4": "FGB02009",
+    "1.3-1.4 Grade B": "FGB03709",
+    "1.4-1.5": "FGB02010",
+    "1.4-1.5 Grade B": "FGB03710",
+    "1.5-1.6": "FGB02011",
+    "1.5-1.6 Grade B": "FGB03711",
+    "1.6-1.7": "FGB02012",
+    "1.6-1.7 Grade B": "FGB03712",
+    "1.7-1.8": "FGB02013",
+    "1.7-1.8 Grade B": "FGB03713",
+    "1.8-1.9": "FGB02014",
+    "1.8-1.9 Grade B": "FGB03714",
+    "1.9-2.0": "FGB02015",
+    "1.9-2.0 Grade B": "FGB03715",
+    "2.0-2.1": "FGB02016",
+    "2.0-2.1 Grade B": "FGB03716",
+    "2.1-2.2": "FGB02017",
+    "2.1-2.2 Grade B": "FGB03717",
+    "2.2-2.3": "FGB02018",
+    "2.2-2.3 Grade B": "FGB03718",
+    "2.3-2.4": "FGB02019",
+    "2.3-2.4 Grade B": "FGB03719",
+    "2.4-2.5": "FGB02020",
+    "2.4-2.5 Grade B": "FGB03720",
+    "2.5-2.6": "FGB02021",
+    "2.5-2.6 Grade B": "FGB03721",
+    "2.6-2.7": "FGB02022",
+    "2.6-2.7 Grade B": "FGB03722",
+    "2.7-2.8": "FGB02023",
+    "2.7-2.8 Grade B": "FGB03723",
+    "2.8-2.9": "FGB02024",
+    "2.8-2.9 Grade B": "FGB03724",
+    "2.9-3.0": "FGB02025",
+    "2.9-3.0 Grade B": "FGB03725",
+    ">= 3.0": "FGB02026",
+    ">= 3.0 Grade B": "FGB03726"
+  };
+
+  const newPiecesPerBox = {
+    "<= 0.6": 25,
+    "<= 0.6 Grade B": 25,
+    "0.6-0.7": 25,
+    "0.6-0.7 Grade B": 25,
+    "0.7-0.8": 25,
+    "0.7-0.8 Grade B": 25,
+    "0.8-0.9": 20,
+    "0.8-0.9 Grade B": 20,
+    "0.9-1.0": 20,
+    "0.9-1.0 Grade B": 20,
+    "1.0-1.1": 20,
+    "1.0-1.1 Grade B": 20,
+    "1.1-1.2": 15,
+    "1.1-1.2 Grade B": 15,
+    "1.2-1.3": 15,
+    "1.2-1.3 Grade B": 15,
+    "1.3-1.4": 15,
+    "1.3-1.4 Grade B": 15,
+    "1.4-1.5": 12,
+    "1.4-1.5 Grade B": 12,
+    "1.5-1.6": 12,
+    "1.5-1.6 Grade B": 12,
+    "1.6-1.7": 12,
+    "1.6-1.7 Grade B": 12,
+    "1.7-1.8": 12,
+    "1.7-1.8 Grade B": 12,
+    "1.8-1.9": 10,
+    "1.8-1.9 Grade B": 10,
+    "1.9-2.0": 10,
+    "1.9-2.0 Grade B": 10,
+    "2.0-2.1": 10,
+    "2.0-2.1 Grade B": 10,
+    "2.1-2.2": 10,
+    "2.1-2.2 Grade B": 10,
+    "2.2-2.3": 6,
+    "2.2-2.3 Grade B": 6,
+    "2.3-2.4": 6,
+    "2.3-2.4 Grade B": 6,
+    "2.4-2.5": 6,
+    "2.4-2.5 Grade B": 6,
+    "2.5-2.6": 6,
+    "2.5-2.6 Grade B": 6,
+    "2.6-2.7": 6,
+    "2.6-2.7 Grade B": 6,
+    "2.7-2.8": 6,
+    "2.7-2.8 Grade B": 6,
+    "2.8-2.9": 6,
+    "2.8-2.9 Grade B": 6,
+    "2.9-3.0": 6,
+    "2.9-3.0 Grade B": 6,
+    ">= 3.0": 6,
+    ">= 3.0 Grade B": 6
+  };
+
   const piecesPerBox = {
     "<= 0.6": 15,
     "0.6-0.7": 15,
@@ -2881,56 +3141,86 @@
   const tbody = document.querySelector("#price-table tbody");
   let currentMOQ = "10";
 
+  function buildRow(row, number, index, isNew) {
+    const tr = document.createElement("tr");
+    tr.dataset.size = row.size;
+    tr.dataset.priceEkor = row.priceEkor || 0;
+    tr.dataset.mode = isNew ? "new" : "old";
+
+    const tdNo = document.createElement("td");
+    tdNo.textContent = number;
+    tr.appendChild(tdNo);
+
+    const tdSize = document.createElement("td");
+    tdSize.textContent = row.size;
+    tr.appendChild(tdSize);
+
+    const tdKode = document.createElement("td");
+    tdKode.textContent = isNew ? (newItemCodes[row.size] || "-") : getKodeItem(row.size);
+    tdKode.dataset.role = "kode";
+    tr.appendChild(tdKode);
+
+    const tdBox = document.createElement("td");
+    const input = document.createElement("input");
+    input.type = "number";
+    input.min = "0";
+    input.value = "";
+    input.className = "box-input";
+    input.dataset.index = index;
+    tdBox.appendChild(input);
+    tr.appendChild(tdBox);
+
+    const tdEkor = document.createElement("td");
+    tdEkor.textContent = "0";
+    tdEkor.dataset.role = "ekor";
+    tr.appendChild(tdEkor);
+
+    const tdKg = document.createElement("td");
+    tdKg.textContent = "0";
+    tdKg.dataset.role = "kg";
+    tr.appendChild(tdKg);
+
+    const tdPriceKg = document.createElement("td");
+    tdPriceKg.textContent = (row.priceKg || 0).toLocaleString("id-ID");
+    tr.appendChild(tdPriceKg);
+
+    const tdPriceEkor = document.createElement("td");
+    tdPriceEkor.textContent = (row.priceEkor || 0).toLocaleString("id-ID");
+    tr.appendChild(tdPriceEkor);
+
+    const tdTotal = document.createElement("td");
+    tdTotal.textContent = "0";
+    tdTotal.dataset.role = "total";
+    tr.appendChild(tdTotal);
+
+    return tr;
+  }
+
   function renderTable() {
     tbody.innerHTML = "";
     const rows = priceTables[currentMOQ] || [];
+    let inputIndex = 0;
 
+    // Qty lama
     rows.forEach((row, index) => {
-      const tr = document.createElement("tr");
-
-      const tdNo = document.createElement("td");
-      tdNo.textContent = index + 1;
-      tr.appendChild(tdNo);
-
-      const tdSize = document.createElement("td");
-      tdSize.textContent = row.size;
-      tr.appendChild(tdSize);
-
-      const tdBox = document.createElement("td");
-      const input = document.createElement("input");
-      input.type = "number";
-      input.min = "0";
-      input.value = "";
-      input.className = "box-input";
-      input.dataset.index = index;
-      tdBox.appendChild(input);
-      tr.appendChild(tdBox);
-
-      const tdEkor = document.createElement("td");
-      tdEkor.textContent = "0";
-      tdEkor.dataset.role = "ekor";
-      tr.appendChild(tdEkor);
-
-      const tdKg = document.createElement("td");
-      tdKg.textContent = "0";
-      tdKg.dataset.role = "kg";
-      tr.appendChild(tdKg);
-
-      const tdPriceKg = document.createElement("td");
-      tdPriceKg.textContent = (row.priceKg || 0).toLocaleString("id-ID");
-      tr.appendChild(tdPriceKg);
-
-      const tdPriceEkor = document.createElement("td");
-      tdPriceEkor.textContent = (row.priceEkor || 0).toLocaleString("id-ID");
-      tr.appendChild(tdPriceEkor);
-
-      const tdTotal = document.createElement("td");
-      tdTotal.textContent = "0";
-      tdTotal.dataset.role = "total";
-      tr.appendChild(tdTotal);
-
-      tbody.appendChild(tr);
+      tbody.appendChild(buildRow(row, index + 1, inputIndex++, false));
     });
+
+    // Qty baru (hanya size yang punya qty baru; PS Afkir tidak ada)
+    const newRows = rows.filter(r => newPiecesPerBox[r.size] !== undefined);
+    if (newRows.length > 0) {
+      const sec = document.createElement("tr");
+      sec.className = "section-row";
+      const td = document.createElement("td");
+      td.colSpan = 9;
+      td.innerHTML = '<span class="section-title">NEW QTY</span>';
+      sec.appendChild(td);
+      tbody.appendChild(sec);
+
+      newRows.forEach((row, index) => {
+        tbody.appendChild(buildRow(row, index + 1, inputIndex++, true));
+      });
+    }
 
     attachInputEvents();
     recalcTotals();
@@ -2952,18 +3242,18 @@
 
     const trs = tbody.querySelectorAll("tr");
 
-    trs.forEach((tr, idx) => {
-      const rowData = rows[idx];
-      if (!rowData) return;
+    trs.forEach((tr) => {
+      if (tr.classList.contains("section-row")) return;
 
-      const size = rowData.size;
-      const priceEkor = rowData.priceEkor || 0;
+      const size = tr.dataset.size;
+      const priceEkor = parseFloat(tr.dataset.priceEkor) || 0;
+      const isNew = tr.dataset.mode === "new";
 
       const input = tr.querySelector("input.box-input");
       const box = parseFloat(input.value) || 0;
       totalBox += box;
 
-      const ekorPerBox = piecesPerBox[size] || 1;
+      const ekorPerBox = (isNew ? newPiecesPerBox[size] : piecesPerBox[size]) || 1;
       const ekor = box * ekorPerBox;
       const midWeight = parseSizeMidWeight(size);
       let tKg;
@@ -3116,19 +3406,20 @@
   let rawText = "*FO Bebek*\n\n";
 
   trs.forEach(function (tr) {
+    if (tr.classList.contains("section-row")) return;
     const tds = tr.querySelectorAll("td");
     if (tds.length === 0) return;
 
     const size = tds[1].textContent.trim();
 
-    const input = tds[2].querySelector("input.box-input");
+    const input = tds[3].querySelector("input.box-input");
     const box = parseFloat(input && input.value ? input.value : "0") || 0;
 
     if (box <= 0) return;
 
-    const ekorText = tds[3].textContent.trim();
-    const priceEkorText = tds[6].textContent.trim();
-    const totalPriceText = tds[7].textContent.trim();
+    const ekorText = tds[4].textContent.trim();
+    const priceEkorText = tds[7].textContent.trim();
+    const totalPriceText = tds[8].textContent.trim();
 
     const ekorNum = parseInt(ekorText.replace(/\./g, "")) || 0;
     const totalNum = parseInt(totalPriceText.replace(/[^0-9]/g, "")) || 0;
@@ -3283,37 +3574,46 @@ document.getElementById("btn-copy-wa").addEventListener("click", function () {
   let rawText = "*FO Bebek*\n\n";
   rawText += "Kirim " + getTanggalKirimText() + "\n\n";
   let lastGrade = null;
+  let newHeaderShown = false;
   let grandTotal = 0;
 
   trs.forEach(function (tr) {
+    if (tr.classList.contains("section-row")) return;
     const tds = tr.querySelectorAll("td");
     if (tds.length === 0) return;
 
     const size = tds[1].textContent.trim();
   
-  let currentGrade = size.includes("PS Afkir") ? "PSAFKIR" : (size.includes("Grade B") ? "B" : "A");
+  const isNewQty = tr.dataset.mode === "new";
+  const baseGrade = size.includes("PS Afkir") ? "PSAFKIR" : (size.includes("Grade B") ? "B" : "A");
+  let currentGrade = baseGrade + (isNewQty ? "_NEW" : "");
   
-  const input = tds[2].querySelector("input.box-input");
+  const input = tds[3].querySelector("input.box-input");
     const karung = parseFloat(input && input.value ? input.value : "0") || 0;
 
     if (karung <= 0) return;
 
   if (lastGrade !== currentGrade) {
     if (lastGrade !== null) rawText += "\n"; // pemisah antar grade
-    const gradeLabel = currentGrade === "PSAFKIR" ? "PS Afkir" : "Grade " + currentGrade;
+    if (isNewQty && !newHeaderShown) {
+      rawText += "*NEW QTY :*\n\n";
+      newHeaderShown = true;
+    }
+    const gradeLabel = (baseGrade === "PSAFKIR" ? "PS Afkir" : "Grade " + baseGrade) + (isNewQty ? " (NEW QTY)" : "");
     rawText += gradeLabel + "\n"; // header grade
     }
 
   lastGrade = currentGrade;
 
-    const ekorText = tds[3].textContent.trim();
-    const priceEkorText = tds[6].textContent.trim();
-    const totalPriceText = tds[7].textContent.trim();
+    const kodeItem = tds[2].textContent.trim();
+    const ekorText = tds[4].textContent.trim();
+    const priceEkorText = tds[7].textContent.trim();
+    const totalPriceText = tds[8].textContent.trim();
 
     const totalNum = parseInt(totalPriceText.replace(/[^0-9]/g, "")) || 0;
     grandTotal += totalNum;
 
-    rawText += "• " + size + " → " + karung + " karung (" + ekorText + " ekor) @" + priceEkorText + "\n";
+    rawText += "• " + size + " (" + kodeItem + ")" + " → " + karung + " karung (" + ekorText + " ekor) @" + priceEkorText + "\n";
   });
 
   rawText += "\n *TOTAL : " + formatRupiah(grandTotal) + "*" + "\n\n";  
